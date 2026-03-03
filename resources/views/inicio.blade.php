@@ -221,7 +221,7 @@
                         <span class="mb-2 text-xs font-bold uppercase tracking-wider text-primary">Arquitectura</span>
                         <h3 class="mb-2 text-xl font-bold text-secondary hover:text-primary cursor-pointer">Tendencias en construcción sostenible para RD en 2024</h3>
                         <p class="mb-4 text-sm text-neutral-600 line-clamp-2">Cómo los materiales ecoeficientes y las técnicas modernas están transformando el sector de la construcción en República Dominicana.</p>
-                        <a class="inline-flex items-center text-sm font-bold text-secondary hover:text-primary" href="#">
+                        <a class="inline-flex items-center text-sm font-bold text-secondary hover:text-primary" href="{{ route('blog') }}">
                             Leer más <span class="material-symbols-outlined text-base ml-1">arrow_forward</span>
                         </a>
                     </div>
@@ -240,7 +240,7 @@
                         <span class="mb-2 text-xs font-bold uppercase tracking-wider text-primary">Ingeniería</span>
                         <h3 class="mb-2 text-xl font-bold text-secondary hover:text-primary cursor-pointer">Normativa de construcción en República Dominicana: Guía 2024</h3>
                         <p class="mb-4 text-sm text-neutral-600 line-clamp-2">Todo lo que debes saber sobre los reglamentos, permisos y normas técnicas vigentes para construir en Santo Domingo y el resto del país.</p>
-                        <a class="inline-flex items-center text-sm font-bold text-secondary hover:text-primary" href="#">
+                        <a class="inline-flex items-center text-sm font-bold text-secondary hover:text-primary" href="{{ route('blog') }}">
                             Leer más <span class="material-symbols-outlined text-base ml-1">arrow_forward</span>
                         </a>
                     </div>
