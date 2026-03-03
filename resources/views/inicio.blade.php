@@ -251,99 +251,163 @@
     </section>
 
     {{-- ========================================================
-         Contact / Quote Form
+         Contact / Quote Form – Premium Redesign
          ======================================================== --}}
-    <section id="contacto" class="bg-secondary py-16 lg:py-24">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <section id="contacto" class="relative overflow-hidden bg-secondary">
 
-                {{-- Left: Form --}}
-                <div>
-                    <h2 class="mb-2 text-3xl font-bold text-white">Solicita una Consulta</h2>
-                    <p class="mb-8 text-neutral-400">Completa el formulario y un especialista de Indago Constructora se pondrá en contacto contigo en menos de 2 horas.</p>
-                    <form class="space-y-4">
-                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                            <div>
-                                <label class="mb-1 block text-sm font-medium text-neutral-300">Nombre Completo</label>
-                                <input
-                                    class="w-full rounded-lg border-neutral-700 bg-secondary/50 px-4 py-3 text-white placeholder-neutral-500 focus:border-primary focus:ring-primary"
-                                    placeholder="Juan Pérez"
-                                    type="text"
-                                />
-                            </div>
-                            <div>
-                                <label class="mb-1 block text-sm font-medium text-neutral-300">Empresa</label>
-                                <input
-                                    class="w-full rounded-lg border-neutral-700 bg-secondary/50 px-4 py-3 text-white placeholder-neutral-500 focus:border-primary focus:ring-primary"
-                                    placeholder="Constructora SA"
-                                    type="text"
-                                />
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                            <div>
-                                <label class="mb-1 block text-sm font-medium text-neutral-300">Teléfono</label>
-                                <input
-                                    class="w-full rounded-lg border-neutral-700 bg-secondary/50 px-4 py-3 text-white placeholder-neutral-500 focus:border-primary focus:ring-primary"
-                                    placeholder="+52 55 1234 5678"
-                                    type="tel"
-                                />
-                            </div>
-                            <div>
-                                <label class="mb-1 block text-sm font-medium text-neutral-300">Tipo de Obra</label>
-                                <select class="w-full rounded-lg border-neutral-700 bg-secondary/50 px-4 py-3 text-white focus:border-primary focus:ring-primary">
-                                    <option>Construcción Residencial</option>
-                                    <option>Construcción Comercial</option>
-                                    <option>Construcción Industrial</option>
-                                    <option>Ingeniería Civil</option>
-                                    <option>Diseño Arquitectónico</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="mb-1 block text-sm font-medium text-neutral-300">Mensaje</label>
-                            <textarea
-                                class="w-full rounded-lg border-neutral-700 bg-secondary/50 px-4 py-3 text-white placeholder-neutral-500 focus:border-primary focus:ring-primary"
-                                placeholder="Cuéntanos sobre tu proyecto de construcción o diseño..."
-                                rows="4"
-                            ></textarea>
-                        </div>
-                        <button
-                            class="mt-2 w-full rounded-lg bg-primary py-4 text-center font-bold text-white transition-colors hover:bg-orange-600 sm:w-auto sm:px-12"
-                            type="button"
-                        >
-                            Enviar Solicitud
-                        </button>
-                    </form>
-                </div>
+        {{-- Background Image + Overlays --}}
+        <div class="absolute inset-0 z-0">
+            <img
+                alt="Proyecto de construcción en proceso"
+                class="h-full w-full object-cover opacity-20"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3Y18_Q3MLN_kagSJUirckmWlWltF8eYFzHS6qa5byMJK7sG6tRXaPJnCE6zzi0WrdR2P4NTctGRdSEBDl4xHtqHMcBs5hKl_09eFua_7lsP8hwp9Q6DLoprrmxUrtj7mdATuEXWOZLQtwiidcPJmMd1QfMsBjTnqLTz1rgBA_IxtIjy96iZ6vfoxUyHrZn0eOqfwPwqwVt6FS64upYL-dR90RU2dEj9HKNgDZQBDxrAu04JUo7sJc8qLbwqXH4Cp5q36IMgrAwgM"
+            />
+            <div class="absolute inset-0 bg-gradient-to-br from-secondary via-secondary/95 to-secondary/80"></div>
+        </div>
 
-                {{-- Right: Map & Contact Info --}}
-                <div class="relative min-h-[400px] rounded-xl overflow-hidden bg-neutral-800">
-                    <img
-                        alt="Ubicación de la sede central"
-                        class="absolute inset-0 h-full w-full object-cover opacity-60 grayscale"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHsMzeHb88braFlj_009KB-HXZL84wHKhnhnpPHvOVGTCmWl6Kgeipe3dxiA_v65ndbwUtmVWdmV69JTCccwAL3KVtwhZkq9G6eef2s9VJiwEHxN9Qr4UWCquPyFYbQv57Jsx45GzcVoSWMEOQHnNzZxbn5aCpBGLLgxLcV_6_8cSn6IZQwPPjPBsGqbNkEKdAb_D4EaVwypJxMh4J0lhwdMkoh3zw-StlmQu7mgf9hwobuk-IP3oybybp6AK4NkQLy-SIzAG5Bb4"
-                    />
-                    <div class="absolute inset-0 bg-secondary/60"></div>
-                    <div class="absolute bottom-8 left-8 right-8 rounded-xl bg-white p-6 shadow-2xl text-neutral-900 max-w-sm">
-                        <h4 class="mb-4 flex items-center gap-2 text-lg font-bold text-secondary">
-                            <span class="material-symbols-outlined text-primary">location_on</span>
-                            Sede Principal
-                        </h4>
-                        <p class="mb-1 text-sm text-neutral-600">Edif. B10, Local 1D</p>
-                        <p class="mb-1 text-sm text-neutral-600">Av. Pedro Livio Cedeño, Ensanche La Fé</p>
-                        <p class="mb-4 text-sm text-neutral-600">Santo Domingo, DN – República Dominicana</p>
-                        <div class="flex gap-4 border-t border-neutral-100 pt-4">
-                            <a class="flex items-center gap-1 text-sm font-bold text-secondary hover:text-primary" href="tel:8098968627">
-                                <span class="material-symbols-outlined text-[18px]">call</span> 809-896-8627
-                            </a>
-                            <a class="flex items-center gap-1 text-sm font-bold text-secondary hover:text-primary" href="mailto:grupoindago@gmail.com">
-                                <span class="material-symbols-outlined text-[18px]">mail</span> grupoindago@gmail.com
-                            </a>
-                        </div>
+        {{-- Decorative Elements --}}
+        <div class="absolute -left-32 -top-32 h-64 w-64 rounded-full bg-primary/5 blur-3xl"></div>
+        <div class="absolute -bottom-20 -right-20 h-80 w-80 rounded-full bg-primary/10 blur-3xl"></div>
+        <div class="absolute right-1/4 top-20 h-1 w-24 rounded bg-gradient-to-r from-primary/50 to-transparent"></div>
+
+        <div class="relative z-10 py-20 lg:py-28">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+                {{-- Section Header --}}
+                <div class="mb-16 text-center">
+                    <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 backdrop-blur-md">
+                        <span class="material-symbols-outlined text-primary text-sm">mail</span>
+                        <span class="text-xs font-semibold text-primary uppercase tracking-widest">Contáctanos</span>
                     </div>
+                    <h2 class="font-display text-4xl font-black text-white md:text-5xl tracking-tight">
+                        ¿Tienes un proyecto <br class="hidden sm:block">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300">en mente?</span>
+                    </h2>
+                    <p class="mx-auto mt-4 max-w-2xl text-lg text-neutral-400 leading-relaxed">
+                        Completa el formulario y un especialista de Indago Constructora se pondrá en contacto contigo en menos de 2 horas.
+                    </p>
                 </div>
 
+                <div class="grid grid-cols-1 items-start gap-12 lg:grid-cols-5">
+
+                    {{-- Left: Glassmorphism Form Card (3 cols) --}}
+                    <div class="lg:col-span-3 rounded-2xl border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-xl lg:p-10">
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                                <div class="group">
+                                    <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-400 group-focus-within:text-primary transition-colors">Nombre Completo</label>
+                                    <input
+                                        class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white placeholder-neutral-600 transition-all duration-300 focus:border-primary/50 focus:bg-white/10 focus:ring-2 focus:ring-primary/20 focus:outline-none"
+                                        placeholder="Juan Pérez"
+                                        type="text"
+                                    />
+                                </div>
+                                <div class="group">
+                                    <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-400 group-focus-within:text-primary transition-colors">Empresa</label>
+                                    <input
+                                        class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white placeholder-neutral-600 transition-all duration-300 focus:border-primary/50 focus:bg-white/10 focus:ring-2 focus:ring-primary/20 focus:outline-none"
+                                        placeholder="Constructora SA"
+                                        type="text"
+                                    />
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                                <div class="group">
+                                    <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-400 group-focus-within:text-primary transition-colors">Teléfono</label>
+                                    <input
+                                        class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white placeholder-neutral-600 transition-all duration-300 focus:border-primary/50 focus:bg-white/10 focus:ring-2 focus:ring-primary/20 focus:outline-none"
+                                        placeholder="+1 809 123 4567"
+                                        type="tel"
+                                    />
+                                </div>
+                                <div class="group">
+                                    <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-400 group-focus-within:text-primary transition-colors">Tipo de Obra</label>
+                                    <select class="w-full appearance-none rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white transition-all duration-300 focus:border-primary/50 focus:bg-white/10 focus:ring-2 focus:ring-primary/20 focus:outline-none">
+                                        <option value="" class="bg-secondary">Selecciona una opción</option>
+                                        <option class="bg-secondary">Construcción Residencial</option>
+                                        <option class="bg-secondary">Construcción Comercial</option>
+                                        <option class="bg-secondary">Construcción Industrial</option>
+                                        <option class="bg-secondary">Ingeniería Civil</option>
+                                        <option class="bg-secondary">Diseño Arquitectónico</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="group">
+                                <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-400 group-focus-within:text-primary transition-colors">Cuéntanos sobre tu proyecto</label>
+                                <textarea
+                                    class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white placeholder-neutral-600 transition-all duration-300 focus:border-primary/50 focus:bg-white/10 focus:ring-2 focus:ring-primary/20 focus:outline-none resize-none"
+                                    placeholder="Describe brevemente qué tipo de obra necesitas, la ubicación y tus plazos estimados..."
+                                    rows="4"
+                                ></textarea>
+                            </div>
+                            <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
+                                <button
+                                    class="group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-primary to-orange-500 py-4 font-bold text-white shadow-xl shadow-primary/25 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/40 hover:scale-[1.02] sm:w-auto sm:px-14"
+                                    type="button"
+                                >
+                                    <span class="relative z-10 flex items-center justify-center gap-2">
+                                        Enviar Solicitud
+                                        <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+                                    </span>
+                                    <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-primary opacity-0 transition-opacity group-hover:opacity-100"></div>
+                                </button>
+                                <p class="text-xs text-neutral-500">
+                                    <span class="material-symbols-outlined text-[14px] align-middle mr-0.5">lock</span>
+                                    Tu información está segura y protegida.
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+
+                    {{-- Right: Contact Info Cards (2 cols) --}}
+                    <div class="lg:col-span-2 flex flex-col gap-5">
+
+                        {{-- Card: Phone --}}
+                        <a href="tel:8098968627" class="group flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-primary/30 hover:bg-white/10 hover:shadow-lg hover:shadow-primary/5">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                                <span class="material-symbols-outlined text-2xl">call</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Llámanos</h4>
+                                <p class="mt-0.5 text-sm text-neutral-400">Lunes a Viernes, 8:00 AM – 6:00 PM</p>
+                                <p class="mt-2 text-lg font-bold text-primary">809-896-8627</p>
+                            </div>
+                        </a>
+
+                        {{-- Card: Email --}}
+                        <a href="mailto:grupoindago@gmail.com" class="group flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-primary/30 hover:bg-white/10 hover:shadow-lg hover:shadow-primary/5">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                                <span class="material-symbols-outlined text-2xl">mail</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Escríbenos</h4>
+                                <p class="mt-0.5 text-sm text-neutral-400">Respondemos en menos de 2 horas</p>
+                                <p class="mt-2 text-lg font-bold text-primary">grupoindago@gmail.com</p>
+                            </div>
+                        </a>
+
+                        {{-- Card: Location --}}
+                        <div class="group flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-primary/30 hover:bg-white/10 hover:shadow-lg hover:shadow-primary/5">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                                <span class="material-symbols-outlined text-2xl">location_on</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Sede Principal</h4>
+                                <p class="mt-0.5 text-sm text-neutral-400">Edif. B10, Local 1D</p>
+                                <p class="text-sm text-neutral-400">Av. Pedro Livio Cedeño, Ensanche La Fé</p>
+                                <p class="mt-2 text-sm font-semibold text-neutral-300">Santo Domingo, DN – RD</p>
+                            </div>
+                        </div>
+
+                        {{-- WhatsApp CTA --}}
+                        <a href="https://wa.me/18098968627" target="_blank" rel="noopener" class="group flex items-center justify-center gap-3 rounded-2xl border border-green-500/20 bg-green-500/10 p-5 transition-all duration-300 hover:border-green-500/40 hover:bg-green-500/20 hover:shadow-lg hover:shadow-green-500/10">
+                            <svg class="h-6 w-6 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            <span class="font-bold text-green-400 group-hover:text-green-300">Chatea por WhatsApp</span>
+                            <span class="material-symbols-outlined text-green-400 text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+                        </a>
+                    </div>
+
+                </div>
             </div>
         </div>
     </section>
