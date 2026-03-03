@@ -21,17 +21,17 @@
                 Desde el diseño hasta la entrega de llaves, Indago Constructora ofrece servicios especializados para cada etapa de su proyecto en la República Dominicana.
             </p>
             {{-- Stat bar --}}
-            <div class="mt-12 grid grid-cols-3 gap-4 max-w-xl mx-auto">
-                <div class="rounded-xl bg-white/5 border border-white/10 px-4 py-4 backdrop-blur-sm">
-                    <span class="block text-3xl font-black text-primary">+15</span>
+            <div id="hero-stat-bar" class="mt-12 grid grid-cols-3 gap-4 max-w-xl mx-auto">
+                <div class="hero-stat-card rounded-xl bg-white/5 border border-white/10 px-4 py-4 backdrop-blur-sm cursor-default" style="opacity:0;transform:translateY(24px)">
+                    <span class="block text-3xl font-black text-primary hero-stat-counter" data-target="15" data-prefix="+">+0</span>
                     <span class="text-xs uppercase tracking-wider text-neutral-400">Años</span>
                 </div>
-                <div class="rounded-xl bg-white/5 border border-white/10 px-4 py-4 backdrop-blur-sm">
-                    <span class="block text-3xl font-black text-primary">+200</span>
+                <div class="hero-stat-card rounded-xl bg-white/5 border border-white/10 px-4 py-4 backdrop-blur-sm cursor-default" style="opacity:0;transform:translateY(24px)">
+                    <span class="block text-3xl font-black text-primary hero-stat-counter" data-target="200" data-prefix="+">+0</span>
                     <span class="text-xs uppercase tracking-wider text-neutral-400">Proyectos</span>
                 </div>
-                <div class="rounded-xl bg-white/5 border border-white/10 px-4 py-4 backdrop-blur-sm">
-                    <span class="block text-3xl font-black text-primary">4</span>
+                <div class="hero-stat-card rounded-xl bg-white/5 border border-white/10 px-4 py-4 backdrop-blur-sm cursor-default" style="opacity:0;transform:translateY(24px)">
+                    <span class="block text-3xl font-black text-primary hero-stat-counter" data-target="4">0</span>
                     <span class="text-xs uppercase tracking-wider text-neutral-400">Líneas de servicio</span>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                         @endforeach
                     </div>
 
-                    <a href="#contacto" class="inline-flex items-center gap-2 rounded-lg bg-secondary px-6 py-3 text-sm font-bold text-white hover:bg-secondary/80 transition-colors">
+                    <a href="{{ route('inicio') }}#contacto" class="inline-flex items-center gap-2 rounded-lg bg-secondary px-6 py-3 text-sm font-bold text-white hover:bg-secondary/80 transition-colors">
                         Solicitar propuesta <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
                     </a>
                 </div>
@@ -131,7 +131,7 @@
                         @endforeach
                     </div>
 
-                    <a href="#contacto" class="inline-flex items-center gap-2 rounded-lg bg-secondary px-6 py-3 text-sm font-bold text-white hover:bg-secondary/80 transition-colors">
+                    <a href="{{ route('inicio') }}#contacto" class="inline-flex items-center gap-2 rounded-lg bg-secondary px-6 py-3 text-sm font-bold text-white hover:bg-secondary/80 transition-colors">
                         Solicitar propuesta <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
                     </a>
                 </div>
@@ -239,7 +239,7 @@
                         @endforeach
                     </div>
 
-                    <a href="#contacto" class="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-bold text-white hover:bg-orange-500 transition-colors shadow-lg shadow-primary/30">
+                    <a href="{{ route('inicio') }}#contacto" class="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-bold text-white hover:bg-orange-500 transition-colors shadow-lg shadow-primary/30">
                         Hablar con un especialista <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
                     </a>
                 </div>

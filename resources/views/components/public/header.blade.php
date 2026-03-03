@@ -29,10 +29,10 @@
             <div class="flex items-center gap-3">
 
                 {{-- Botón Contacto: solo visible en desktop --}}
-                <button class="hidden md:flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-primary/30 hover:bg-orange-500 transition-all">
+                <a href="{{ route('inicio') }}#contacto" class="hidden md:flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-primary/30 hover:bg-orange-500 transition-all">
                     <span>Contacto</span>
                     <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-                </button>
+                </a>
 
                 {{-- Botón hamburguesa: solo visible en móvil --}}
                 <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center rounded-lg p-2 text-secondary hover:bg-neutral-100 transition-colors" aria-label="Abrir menú">
@@ -51,10 +51,10 @@
 
             {{-- Botón Contacto dentro del menú móvil --}}
             <div class="mt-3 px-3">
-                <button class="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white shadow-lg shadow-primary/30 hover:bg-orange-500 transition-all">
+                <a href="{{ route('inicio') }}#contacto" class="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white shadow-lg shadow-primary/30 hover:bg-orange-500 transition-all">
                     <span>Contacto</span>
                     <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-                </button>
+                </a>
             </div>
         </nav>
     </div>

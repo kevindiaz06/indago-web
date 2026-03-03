@@ -35,3 +35,129 @@ html {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
+/* ============================================
+   Misión & Visión – Interactive Cards
+   ============================================ */
+
+.mv-card-wrapper { perspective: 800px; }
+
+.mv-card {
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    will-change: transform;
+}
+.mv-card:hover {
+    box-shadow: 0 25px 60px -12px rgba(0,0,0,0.25);
+}
+
+/* Shimmer sweep on hover */
+.mv-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.08) 55%, transparent 60%);
+    transform: translateX(-100%);
+    transition: none;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 5;
+}
+.mv-card:hover::after {
+    animation: mvShimmer 0.8s ease forwards;
+}
+@keyframes mvShimmer {
+    to { transform: translateX(100%); }
+}
+
+/* Floating circles animation */
+@keyframes mvFloat1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(12px, -18px) scale(1.1); }
+}
+@keyframes mvFloat2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-10px, 14px) scale(0.9); }
+}
+
+/* Icon pulse on hover */
+.mv-icon-box {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.mv-card:hover .mv-icon-box {
+    transform: translateZ(30px) scale(1.1);
+    box-shadow: 0 8px 25px -5px rgba(234,179,8,0.4);
+}
+
+/* Scroll reveal */
+.mv-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.mv-reveal.mv-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animated gradient border */
+.mv-gradient-border {
+    position: relative;
+}
+.mv-gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 1rem;
+    padding: 2px;
+    background: conic-gradient(from var(--mv-angle, 0deg), var(--color-primary, #eab308), transparent 40%, transparent 60%, var(--color-primary, #eab308));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+.mv-gradient-border:hover::before {
+    opacity: 1;
+    animation: mvBorderRotate 3s linear infinite;
+}
+@keyframes mvBorderRotate {
+    to { --mv-angle: 360deg; }
+}
+@property --mv-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+/* ============================================
+   Hero Stat Bar – Bounce-in & Hover Effects
+   ============================================ */
+
+/* Bounce-in entrance animation */
+@keyframes heroStatBounceIn {
+    0%   { opacity: 0; transform: translateY(24px) scale(0.95); }
+    50%  { opacity: 1; transform: translateY(-6px) scale(1.02); }
+    70%  { transform: translateY(3px) scale(0.99); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.hero-stat-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Subtle hover bounce */
+.hero-stat-card:hover {
+    animation: heroStatHover 0.5s ease;
+    border-color: rgba(252, 163, 17, 0.4);
+    box-shadow: 0 0 20px rgba(252, 163, 17, 0.12);
+}
+
+@keyframes heroStatHover {
+    0%   { transform: translateY(0); }
+    30%  { transform: translateY(-5px); }
+    60%  { transform: translateY(2px); }
+    100% { transform: translateY(0); }
+}

@@ -36,32 +36,39 @@
 
                 {{-- Timeline visual --}}
                 <div class="relative">
-                    <div class="absolute left-6 top-0 h-full w-0.5 bg-gradient-to-b from-primary via-primary/50 to-transparent"></div>
-                    <div class="space-y-8 pl-16">
+                    {{-- Línea central del timeline --}}
+                    <div class="absolute left-[23px] top-0 h-full w-[2px]" style="background: linear-gradient(to bottom, var(--color-primary), rgba(var(--color-primary-rgb, 234,179,8), 0.3), transparent);"></div>
 
-                        <div class="relative">
-                            <div class="absolute -left-10 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white text-xs font-black">09</div>
-                            <h4 class="text-lg font-bold text-white">Fundación</h4>
-                            <p class="mt-1 text-sm text-neutral-400">Inicio de operaciones en Santo Domingo con un equipo de 5 ingenieros especializados.</p>
-                        </div>
+                    <div class="space-y-6">
 
-                        <div class="relative">
-                            <div class="absolute -left-10 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white text-xs font-black">13</div>
-                            <h4 class="text-lg font-bold text-white">Expansión Regional</h4>
-                            <p class="mt-1 text-sm text-neutral-400">Apertura de proyectos en Santiago y La Romana. Incorporación de maquinaria pesada propia.</p>
-                        </div>
+                        @php
+                            $hitos = [
+                                ['year' => '2009', 'icon' => 'rocket_launch', 'title' => 'Fundación', 'desc' => 'Inicio de operaciones en Santo Domingo con un equipo de 5 ingenieros especializados.'],
+                                ['year' => '2013', 'icon' => 'trending_up', 'title' => 'Expansión Regional', 'desc' => 'Apertura de proyectos en Santiago y La Romana. Incorporación de maquinaria pesada propia.'],
+                                ['year' => '2018', 'icon' => 'workspace_premium', 'title' => 'Certificaciones ISO', 'desc' => 'Obtención de certificaciones de calidad y seguridad internacional. +100 proyectos completados.'],
+                                ['year' => '2024', 'icon' => 'emoji_events', 'title' => 'Hoy', 'desc' => 'Líderes en ingeniería civil y arquitectura en RD. +200 proyectos y 150 colaboradores activos.'],
+                            ];
+                        @endphp
 
-                        <div class="relative">
-                            <div class="absolute -left-10 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white text-xs font-black">18</div>
-                            <h4 class="text-lg font-bold text-white">Certificaciones ISO</h4>
-                            <p class="mt-1 text-sm text-neutral-400">Obtención de certificaciones de calidad y seguridad internacional. +100 proyectos completados.</p>
-                        </div>
+                        @foreach ($hitos as $i => $hito)
+                        <div class="group relative flex items-start gap-5">
+                            {{-- Dot marker con glow --}}
+                            <div class="relative z-10 flex-shrink-0">
+                                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/20 border border-primary/40 backdrop-blur-sm transition-all duration-300 group-hover:bg-primary/30 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(234,179,8,0.3)]">
+                                    <span class="material-symbols-outlined text-xl text-primary">{{ $hito['icon'] }}</span>
+                                </div>
+                            </div>
 
-                        <div class="relative">
-                            <div class="absolute -left-10 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white text-xs font-black">24</div>
-                            <h4 class="text-lg font-bold text-white">Hoy</h4>
-                            <p class="mt-1 text-sm text-neutral-400">Líderes en ingeniería civil y arquitectura en RD. +200 proyectos y 150 colaboradores activos.</p>
+                            {{-- Card de contenido --}}
+                            <div class="flex-1 rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-all duration-300 group-hover:border-primary/30 group-hover:bg-white/10 group-hover:shadow-lg group-hover:shadow-primary/5" style="border-left: 3px solid var(--color-primary, #eab308);">
+                                <div class="mb-2 flex items-center gap-3">
+                                    <span class="inline-flex items-center rounded-full bg-primary/15 px-3 py-0.5 text-xs font-bold tracking-wider text-primary">{{ $hito['year'] }}</span>
+                                    <h4 class="text-lg font-bold text-white">{{ $hito['title'] }}</h4>
+                                </div>
+                                <p class="text-sm leading-relaxed text-neutral-400">{{ $hito['desc'] }}</p>
+                            </div>
                         </div>
+                        @endforeach
 
                     </div>
                 </div>
@@ -80,33 +87,53 @@
                 <h3 class="font-display text-4xl font-bold text-secondary">Misión, Visión y Valores</h3>
             </div>
 
-            {{-- Misión y Visión --}}
-            <div class="mb-16 grid gap-8 lg:grid-cols-2">
+            {{-- Misión y Visión (Interactive Cards) --}}
+            <div id="mv-cards" class="mb-16 grid gap-8 lg:grid-cols-2">
                 {{-- Misión --}}
-                <div class="relative overflow-hidden rounded-2xl bg-secondary p-10">
-                    <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-primary/10"></div>
-                    <div class="relative z-10">
-                        <div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary">
-                            <span class="material-symbols-outlined text-3xl text-white">flag</span>
+                <div class="mv-card-wrapper mv-reveal">
+                    <div class="mv-card mv-gradient-border relative overflow-hidden rounded-2xl bg-secondary p-10 cursor-pointer" data-mv-tilt>
+                        {{-- Floating decorative circles --}}
+                        <div class="absolute -right-6 -top-6 h-36 w-36 rounded-full bg-primary/10" style="animation: mvFloat1 6s ease-in-out infinite;"></div>
+                        <div class="absolute right-20 top-24 h-16 w-16 rounded-full bg-primary/5" style="animation: mvFloat2 8s ease-in-out infinite;"></div>
+                        <div class="absolute -left-4 bottom-10 h-20 w-20 rounded-full bg-primary/5" style="animation: mvFloat1 7s ease-in-out infinite 1s;"></div>
+
+                        <div class="relative z-10" style="transform: translateZ(20px);">
+                            <div class="mv-icon-box mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-primary shadow-lg shadow-primary/30">
+                                <span class="material-symbols-outlined text-3xl text-white">flag</span>
+                            </div>
+                            <h4 class="mb-4 text-2xl font-black text-white">Nuestra Misión</h4>
+                            <p class="text-lg leading-relaxed text-neutral-300">
+                                Brindar soluciones integrales de ingeniería, arquitectura y construcción con los más altos estándares de calidad, seguridad e innovación, contribuyendo al desarrollo sostenible de la República Dominicana y generando valor a nuestros clientes y comunidades.
+                            </p>
+                            <div class="mt-6 flex items-center gap-2 text-primary/70 text-sm font-semibold uppercase tracking-wider">
+                                <span class="h-[2px] w-8 bg-primary/40 rounded-full"></span>
+                                Compromiso desde 2009
+                            </div>
                         </div>
-                        <h4 class="mb-4 text-2xl font-black text-white">Nuestra Misión</h4>
-                        <p class="text-lg leading-relaxed text-neutral-300">
-                            Brindar soluciones integrales de ingeniería, arquitectura y construcción con los más altos estándares de calidad, seguridad e innovación, contribuyendo al desarrollo sostenible de la República Dominicana y generando valor a nuestros clientes y comunidades.
-                        </p>
                     </div>
                 </div>
 
                 {{-- Visión --}}
-                <div class="relative overflow-hidden rounded-2xl border-2 border-secondary/10 bg-neutral-50 p-10">
-                    <div class="absolute -left-8 -bottom-8 h-40 w-40 rounded-full bg-primary/5"></div>
-                    <div class="relative z-10">
-                        <div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-secondary">
-                            <span class="material-symbols-outlined text-3xl text-primary">visibility</span>
+                <div class="mv-card-wrapper mv-reveal" style="transition-delay: 0.15s;">
+                    <div class="mv-card mv-gradient-border relative overflow-hidden rounded-2xl border-2 border-secondary/10 bg-neutral-50 p-10 cursor-pointer" data-mv-tilt>
+                        {{-- Floating decorative circles --}}
+                        <div class="absolute -left-6 -bottom-6 h-36 w-36 rounded-full bg-primary/5" style="animation: mvFloat2 6s ease-in-out infinite;"></div>
+                        <div class="absolute left-20 bottom-24 h-16 w-16 rounded-full bg-secondary/5" style="animation: mvFloat1 8s ease-in-out infinite;"></div>
+                        <div class="absolute -right-4 top-10 h-20 w-20 rounded-full bg-secondary/5" style="animation: mvFloat2 7s ease-in-out infinite 1s;"></div>
+
+                        <div class="relative z-10" style="transform: translateZ(20px);">
+                            <div class="mv-icon-box mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-secondary shadow-lg shadow-secondary/30">
+                                <span class="material-symbols-outlined text-3xl text-primary">visibility</span>
+                            </div>
+                            <h4 class="mb-4 text-2xl font-black text-secondary">Nuestra Visión</h4>
+                            <p class="text-lg leading-relaxed text-neutral-600">
+                                Ser la empresa constructora más reconocida y confiable de la República Dominicana para 2030, expandiendo nuestro portafolio hacia el Caribe y Centroamérica, siendo referentes en innovación, sostenibilidad y excelencia técnica.
+                            </p>
+                            <div class="mt-6 flex items-center gap-2 text-secondary/50 text-sm font-semibold uppercase tracking-wider">
+                                <span class="h-[2px] w-8 bg-secondary/30 rounded-full"></span>
+                                Horizonte 2030
+                            </div>
                         </div>
-                        <h4 class="mb-4 text-2xl font-black text-secondary">Nuestra Visión</h4>
-                        <p class="text-lg leading-relaxed text-neutral-600">
-                            Ser la empresa constructora más reconocida y confiable de la República Dominicana para 2030, expandiendo nuestro portafolio hacia el Caribe y Centroamérica, siendo referentes en innovación, sostenibilidad y excelencia técnica.
-                        </p>
                     </div>
                 </div>
             </div>
@@ -140,7 +167,7 @@
     {{-- =============================================
          INFRAESTRUCTURA Y MAQUINARIA
          ============================================= --}}
-    <section class="py-24 bg-neutral-100">
+    <section id="infra-stats" class="py-24 bg-neutral-100">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
             <div class="mb-16 md:flex md:items-end md:justify-between">
@@ -150,12 +177,12 @@
                     <p class="mt-4 max-w-xl text-neutral-600">Contamos con flota propia de maquinaria pesada, lo que nos permite ejecutar proyectos de gran escala con total autonomía, control de calidad y tiempos de entrega garantizados.</p>
                 </div>
                 <div class="mt-6 md:mt-0 grid grid-cols-2 gap-4 md:grid-cols-2">
-                    <div class="rounded-xl bg-secondary px-6 py-4 text-center">
-                        <span class="block text-3xl font-black text-primary">+30</span>
+                    <div class="infra-stat-card rounded-xl bg-secondary px-6 py-4 text-center" style="opacity:0;transform:translateY(20px)">
+                        <span class="infra-counter block text-3xl font-black text-primary" data-target="30" data-prefix="+">0</span>
                         <span class="text-xs uppercase tracking-wider text-neutral-300">Máquinas</span>
                     </div>
-                    <div class="rounded-xl bg-secondary px-6 py-4 text-center">
-                        <span class="block text-3xl font-black text-primary">100%</span>
+                    <div class="infra-stat-card rounded-xl bg-secondary px-6 py-4 text-center" style="opacity:0;transform:translateY(20px)">
+                        <span class="infra-counter block text-3xl font-black text-primary" data-target="100" data-suffix="%">0</span>
                         <span class="text-xs uppercase tracking-wider text-neutral-300">Flota propia</span>
                     </div>
                 </div>
