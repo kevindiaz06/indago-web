@@ -76,67 +76,6 @@
         </div>
     </section>
 
-    {{-- Counter Animation Script --}}
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const section = document.getElementById('trust-stats');
-            const counters = section.querySelectorAll('.counter');
-            const statCards = section.querySelectorAll('.stat-card');
-            let animated = false;
-
-            // Easing function — easeOutExpo for a satisfying deceleration
-            function easeOutExpo(t) {
-                return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-            }
-
-            function animateCounter(el, duration) {
-                const target = parseInt(el.dataset.target, 10);
-                const suffix = el.dataset.suffix || '';
-                const start = performance.now();
-
-                function update(now) {
-                    const elapsed = now - start;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const easedProgress = easeOutExpo(progress);
-                    const current = Math.round(easedProgress * target);
-
-                    el.textContent = current + suffix;
-
-                    if (progress < 1) {
-                        requestAnimationFrame(update);
-                    }
-                }
-                requestAnimationFrame(update);
-            }
-
-            function revealCards() {
-                statCards.forEach((card, i) => {
-                    setTimeout(() => {
-                        card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, i * 200);
-                });
-            }
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !animated) {
-                        animated = true;
-                        revealCards();
-                        // Start counters after the first card fades in
-                        setTimeout(() => {
-                            counters.forEach(counter => animateCounter(counter, 5000));
-                        }, 300);
-                        observer.unobserve(section);
-                    }
-                });
-            }, { threshold: 0.3 });
-
-            observer.observe(section);
-        });
-    </script>
-
     {{-- ========================================================
          Services Section
          ======================================================== --}}
