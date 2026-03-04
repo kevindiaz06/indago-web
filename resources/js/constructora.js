@@ -256,4 +256,76 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ─── Proyectos · Filtros + Modal ────────────────────────────
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const proyectoCards = document.querySelectorAll('.proyecto-card');
+    const emptyState = document.getElementById('empty-state');
+
+    if (filterButtons.length && proyectoCards.length) {
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // estilos activos
+                filterButtons.forEach(b => {
+                    b.classList.remove('active-filter', 'bg-secondary', 'text-white', 'border-secondary');
+                    b.classList.add('border-neutral-200', 'text-neutral-600', 'hover:border-primary', 'hover:text-primary');
+                });
+                btn.classList.add('active-filter', 'bg-secondary', 'text-white', 'border-secondary');
+                btn.classList.remove('border-neutral-200', 'text-neutral-600');
+
+                const filter = btn.dataset.filter;
+                let visible = 0;
+
+                proyectoCards.forEach(card => {
+                    const tipo = card.dataset.tipo || '';
+                    const estado = card.dataset.estado || '';
+                    const match = filter === 'all' || tipo.includes(filter) || estado === filter;
+                    card.style.display = match ? '' : 'none';
+                    if (match) visible++;
+                });
+
+                if (emptyState) emptyState.classList.toggle('hidden', visible > 0);
+            });
+        });
+
+        // Inicializar estilos del botón "Todos"
+        const allBtn = document.querySelector('[data-filter="all"]');
+        if (allBtn) {
+            allBtn.classList.add('bg-secondary', 'text-white', 'border-secondary');
+        }
+        document.querySelectorAll('.filter-btn:not([data-filter="all"])').forEach(b => {
+            b.classList.add('border-neutral-200', 'text-neutral-600', 'hover:border-primary', 'hover:text-primary');
+        });
+    }
+
+    // ── Modal de Proyectos ──────────────────────────────────────
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalCloseBtn = document.getElementById('modal-close');
+
+    if (modalOverlay && proyectoCards.length) {
+        proyectoCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const id = card.dataset.id;
+                // ocultar todos los contenidos del modal
+                document.querySelectorAll('.modal-content').forEach(mc => mc.classList.add('hidden'));
+                // mostrar el correcto
+                const target = document.getElementById('modal-' + id);
+                if (target) target.classList.remove('hidden');
+                // mostrar overlay
+                modalOverlay.classList.remove('hidden');
+                modalOverlay.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        const closeModal = () => {
+            modalOverlay.classList.add('hidden');
+            modalOverlay.classList.remove('flex');
+            document.body.style.overflow = '';
+        };
+
+        if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    }
+
 });

@@ -346,9 +346,6 @@
                                         required
                                     >
                                         <option value="" class="bg-secondary">Selecciona una opción</option>
-                                        <option class="bg-secondary" value="residencial">Construcción Residencial</option>
-                                        <option class="bg-secondary" value="comercial">Construcción Comercial</option>
-                                        <option class="bg-secondary" value="industrial">Construcción Industrial</option>
                                         <option class="bg-secondary" value="civil">Ingeniería Civil</option>
                                         <option class="bg-secondary" value="arquitectonico">Diseño Arquitectónico</option>
                                     </select>
