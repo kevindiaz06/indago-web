@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ─── Proyectos · Filtros + Modal ────────────────────────────
+    // ─── Proyectos · Filtros + Modal ─────────
     const filterButtons = document.querySelectorAll('.filter-btn');
     const proyectoCards = document.querySelectorAll('.proyecto-card');
     const emptyState = document.getElementById('empty-state');
