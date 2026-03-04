@@ -292,58 +292,101 @@
 
                     {{-- Left: Glassmorphism Form Card (3 cols) --}}
                     <div class="lg:col-span-3 rounded-2xl border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-xl lg:p-10">
-                        <form class="space-y-6">
+                        <form class="space-y-6" id="contacto-form">
+
+                            {{-- Row 1: Nombre Completo + Correo Electrónico --}}
                             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                                 <div class="group">
-                                    <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-400 group-focus-within:text-primary transition-colors">Nombre Completo</label>
+                                    <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-400 group-focus-within:text-primary transition-colors">
+                                        Nombre Completo <span class="text-red-400">*</span>
+                                    </label>
                                     <input
                                         class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white placeholder-neutral-600 transition-all duration-300 focus:border-primary/50 focus:bg-white/10 focus:ring-2 focus:ring-primary/20 focus:outline-none"
                                         placeholder="Juan Pérez"
                                         type="text"
+                                        name="nombre"
+                                        required
                                     />
                                 </div>
                                 <div class="group">
-                                    <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-400 group-focus-within:text-primary transition-colors">Empresa</label>
+                                    <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-400 group-focus-within:text-primary transition-colors">
+                                        Correo Electrónico <span class="text-red-400">*</span>
+                                    </label>
                                     <input
                                         class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white placeholder-neutral-600 transition-all duration-300 focus:border-primary/50 focus:bg-white/10 focus:ring-2 focus:ring-primary/20 focus:outline-none"
-                                        placeholder="Constructora SA"
-                                        type="text"
+                                        placeholder="correo@ejemplo.com"
+                                        type="email"
+                                        name="email"
+                                        required
                                     />
                                 </div>
                             </div>
+
+                            {{-- Row 2: Teléfono + Tipo de Obra --}}
                             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                                 <div class="group">
-                                    <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-400 group-focus-within:text-primary transition-colors">Teléfono</label>
+                                    <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-400 group-focus-within:text-primary transition-colors">
+                                        Teléfono <span class="text-red-400">*</span>
+                                    </label>
                                     <input
                                         class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white placeholder-neutral-600 transition-all duration-300 focus:border-primary/50 focus:bg-white/10 focus:ring-2 focus:ring-primary/20 focus:outline-none"
                                         placeholder="+1 809 123 4567"
                                         type="tel"
+                                        name="telefono"
+                                        required
                                     />
                                 </div>
                                 <div class="group">
-                                    <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-400 group-focus-within:text-primary transition-colors">Tipo de Obra</label>
-                                    <select class="w-full appearance-none rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white transition-all duration-300 focus:border-primary/50 focus:bg-white/10 focus:ring-2 focus:ring-primary/20 focus:outline-none">
+                                    <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-400 group-focus-within:text-primary transition-colors">
+                                        Tipo de Obra <span class="text-red-400">*</span>
+                                    </label>
+                                    <select
+                                        class="w-full appearance-none rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white transition-all duration-300 focus:border-primary/50 focus:bg-white/10 focus:ring-2 focus:ring-primary/20 focus:outline-none"
+                                        name="tipo_obra"
+                                        required
+                                    >
                                         <option value="" class="bg-secondary">Selecciona una opción</option>
-                                        <option class="bg-secondary">Construcción Residencial</option>
-                                        <option class="bg-secondary">Construcción Comercial</option>
-                                        <option class="bg-secondary">Construcción Industrial</option>
-                                        <option class="bg-secondary">Ingeniería Civil</option>
-                                        <option class="bg-secondary">Diseño Arquitectónico</option>
+                                        <option class="bg-secondary" value="residencial">Construcción Residencial</option>
+                                        <option class="bg-secondary" value="comercial">Construcción Comercial</option>
+                                        <option class="bg-secondary" value="industrial">Construcción Industrial</option>
+                                        <option class="bg-secondary" value="civil">Ingeniería Civil</option>
+                                        <option class="bg-secondary" value="arquitectonico">Diseño Arquitectónico</option>
                                     </select>
                                 </div>
                             </div>
+
+                            {{-- Row 3: Empresa (Opcional) --}}
                             <div class="group">
-                                <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-400 group-focus-within:text-primary transition-colors">Cuéntanos sobre tu proyecto</label>
+                                <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-400 group-focus-within:text-primary transition-colors">
+                                    Empresa <span class="text-neutral-600 text-[10px] font-normal normal-case tracking-normal">(Opcional)</span>
+                                </label>
+                                <input
+                                    class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white placeholder-neutral-600 transition-all duration-300 focus:border-primary/50 focus:bg-white/10 focus:ring-2 focus:ring-primary/20 focus:outline-none"
+                                    placeholder="Nombre de tu empresa o razón social"
+                                    type="text"
+                                    name="empresa"
+                                />
+                            </div>
+
+                            {{-- Row 4: Mensaje --}}
+                            <div class="group">
+                                <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-400 group-focus-within:text-primary transition-colors">
+                                    Cuéntanos sobre tu proyecto <span class="text-red-400">*</span>
+                                </label>
                                 <textarea
                                     class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white placeholder-neutral-600 transition-all duration-300 focus:border-primary/50 focus:bg-white/10 focus:ring-2 focus:ring-primary/20 focus:outline-none resize-none"
                                     placeholder="Describe brevemente qué tipo de obra necesitas, la ubicación y tus plazos estimados..."
                                     rows="4"
+                                    name="mensaje"
+                                    required
                                 ></textarea>
                             </div>
+
+                            {{-- Required fields note + Submit --}}
                             <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
                                 <button
                                     class="group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-primary to-orange-500 py-4 font-bold text-white shadow-xl shadow-primary/25 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/40 hover:scale-[1.02] sm:w-auto sm:px-14"
-                                    type="button"
+                                    type="submit"
                                 >
                                     <span class="relative z-10 flex items-center justify-center gap-2">
                                         Enviar Solicitud
@@ -351,10 +394,16 @@
                                     </span>
                                     <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-primary opacity-0 transition-opacity group-hover:opacity-100"></div>
                                 </button>
-                                <p class="text-xs text-neutral-500">
-                                    <span class="material-symbols-outlined text-[14px] align-middle mr-0.5">lock</span>
-                                    Tu información está segura y protegida.
-                                </p>
+                                <div class="text-xs text-neutral-500 flex flex-col gap-1">
+                                    <p>
+                                        <span class="text-red-400 mr-0.5">*</span>
+                                        Campos obligatorios
+                                    </p>
+                                    <p>
+                                        <span class="material-symbols-outlined text-[14px] align-middle mr-0.5">lock</span>
+                                        Tu información está segura y protegida.
+                                    </p>
+                                </div>
                             </div>
                         </form>
                     </div>
