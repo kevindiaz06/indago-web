@@ -151,12 +151,12 @@
                 @endphp
 
                 @foreach ($valores as $v)
-                <div class="group rounded-xl border border-neutral-100 bg-white p-8 shadow-sm transition-all hover:border-primary hover:shadow-xl hover:-translate-y-1">
+                <div class="valor-card group relative overflow-hidden rounded-xl border border-neutral-100 bg-white p-8 shadow-sm cursor-pointer transition-all hover:border-primary hover:shadow-xl hover:-translate-y-1">
                     <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-neutral-100 text-secondary transition-colors group-hover:bg-primary group-hover:text-white">
                         <span class="material-symbols-outlined text-2xl">{{ $v['icon'] }}</span>
                     </div>
-                    <h5 class="mb-2 text-lg font-bold text-secondary">{{ $v['titulo'] }}</h5>
-                    <p class="text-sm leading-relaxed text-neutral-500">{{ $v['texto'] }}</p>
+                    <h5 class="mb-2 text-lg font-bold text-secondary transition-colors group-hover:text-white">{{ $v['titulo'] }}</h5>
+                    <p class="text-sm leading-relaxed text-neutral-500 transition-colors group-hover:text-neutral-200">{{ $v['texto'] }}</p>
                 </div>
                 @endforeach
 

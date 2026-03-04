@@ -31,7 +31,7 @@
         <x-public.header />
 
         {{-- Page Content --}}
-        <main>
+        <main class="pt-20">
             {{ $slot }}
         </main>
 
@@ -39,6 +39,14 @@
         <x-public.footer />
 
     </div>
+
+    {{-- Scroll-to-Top Button --}}
+    <button id="scroll-to-top"
+            aria-label="Volver arriba"
+            title="Volver arriba"
+            class="scroll-to-top-btn">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </button>
 
 </body>
 </html>

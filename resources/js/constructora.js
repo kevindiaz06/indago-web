@@ -228,4 +228,32 @@ document.addEventListener('DOMContentLoaded', () => {
         heroObserver.observe(heroStatBar);
     }
 
+    // ─── Scroll-to-Top Button ───────────────────────────────────
+    const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+    if (scrollToTopBtn) {
+        const SCROLL_THRESHOLD = 400; // px from top to show button
+        let ticking = false;
+
+        function toggleScrollBtn() {
+            if (window.scrollY > SCROLL_THRESHOLD) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(toggleScrollBtn);
+                ticking = true;
+            }
+        }, { passive: true });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
 });

@@ -2,7 +2,7 @@
      Componente: Header público – Indago Constructora
      Uso: <x-public.header />
      ============================================================ --}}
-<header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-sm border-b border-neutral-100">
+<header class="fixed top-0 z-50 w-full bg-white/95 backdrop-blur-sm border-b border-neutral-100">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-20 items-center justify-between">
 
