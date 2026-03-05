@@ -18,11 +18,11 @@
 
             {{-- Navigation (desktop) --}}
             <nav class="hidden md:flex items-center gap-8">
-                <a class="text-sm font-semibold text-neutral-800 hover:text-primary transition-colors" href="{{ route('inicio') }}">Inicio</a>
-                <a class="text-sm font-semibold text-neutral-800 hover:text-primary transition-colors" href="{{ route('nosotros') }}">Nosotros</a>
-                <a class="text-sm font-semibold text-neutral-800 hover:text-primary transition-colors" href="{{ route('servicios') }}">Servicios</a>
-                <a class="text-sm font-semibold text-neutral-800 hover:text-primary transition-colors" href="{{ route('proyectos') }}">Proyectos</a>
-                <a class="text-sm font-semibold text-neutral-800 hover:text-primary transition-colors" href="{{ route('blog') }}">Blog</a>
+                <a class="text-sm font-semibold transition-colors py-1 border-b-2 {{ request()->routeIs('inicio') ? 'text-primary border-primary' : 'text-neutral-800 border-transparent hover:text-primary' }}" href="{{ route('inicio') }}">Inicio</a>
+                <a class="text-sm font-semibold transition-colors py-1 border-b-2 {{ request()->routeIs('nosotros') ? 'text-primary border-primary' : 'text-neutral-800 border-transparent hover:text-primary' }}" href="{{ route('nosotros') }}">Nosotros</a>
+                <a class="text-sm font-semibold transition-colors py-1 border-b-2 {{ request()->routeIs('servicios') ? 'text-primary border-primary' : 'text-neutral-800 border-transparent hover:text-primary' }}" href="{{ route('servicios') }}">Servicios</a>
+                <a class="text-sm font-semibold transition-colors py-1 border-b-2 {{ request()->routeIs('proyectos') ? 'text-primary border-primary' : 'text-neutral-800 border-transparent hover:text-primary' }}" href="{{ route('proyectos') }}">Proyectos</a>
+                <a class="text-sm font-semibold transition-colors py-1 border-b-2 {{ request()->routeIs('blog') ? 'text-primary border-primary' : 'text-neutral-800 border-transparent hover:text-primary' }}" href="{{ route('blog') }}">Blog</a>
             </nav>
 
             {{-- Actions --}}
@@ -43,11 +43,11 @@
 
         {{-- Mobile Navigation (aparece al hacer clic en hamburguesa) --}}
         <nav id="mobile-menu" class="hidden border-t border-neutral-100 pb-4 pt-3 flex-col gap-1">
-            <a class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-neutral-800 hover:bg-neutral-100 hover:text-primary transition-colors" href="{{ route('inicio') }}">Inicio</a>
-            <a class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-neutral-800 hover:bg-neutral-100 hover:text-primary transition-colors" href="{{ route('nosotros') }}">Nosotros</a>
-            <a class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-neutral-800 hover:bg-neutral-100 hover:text-primary transition-colors" href="{{ route('servicios') }}">Servicios</a>
-            <a class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-neutral-800 hover:bg-neutral-100 hover:text-primary transition-colors" href="{{ route('proyectos') }}">Proyectos</a>
-            <a class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-neutral-800 hover:bg-neutral-100 hover:text-primary transition-colors" href="{{ route('blog') }}">Blog</a>
+            <a class="block rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors {{ request()->routeIs('inicio') ? 'text-primary bg-primary/10' : 'text-neutral-800 hover:bg-neutral-100 hover:text-primary' }}" href="{{ route('inicio') }}">Inicio</a>
+            <a class="block rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors {{ request()->routeIs('nosotros') ? 'text-primary bg-primary/10' : 'text-neutral-800 hover:bg-neutral-100 hover:text-primary' }}" href="{{ route('nosotros') }}">Nosotros</a>
+            <a class="block rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors {{ request()->routeIs('servicios') ? 'text-primary bg-primary/10' : 'text-neutral-800 hover:bg-neutral-100 hover:text-primary' }}" href="{{ route('servicios') }}">Servicios</a>
+            <a class="block rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors {{ request()->routeIs('proyectos') ? 'text-primary bg-primary/10' : 'text-neutral-800 hover:bg-neutral-100 hover:text-primary' }}" href="{{ route('proyectos') }}">Proyectos</a>
+            <a class="block rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors {{ request()->routeIs('blog') ? 'text-primary bg-primary/10' : 'text-neutral-800 hover:bg-neutral-100 hover:text-primary' }}" href="{{ route('blog') }}">Blog</a>
 
             {{-- Botón Contacto dentro del menú móvil --}}
             <div class="mt-3 px-3">

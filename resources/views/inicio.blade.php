@@ -95,7 +95,7 @@
             <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
 
                 {{-- Service 1 --}}
-                <div class="group relative overflow-hidden rounded-xl bg-white p-8 shadow-sm ring-1 ring-neutral-100 transition-all hover:shadow-xl hover:-translate-y-1">
+                <div class="group relative overflow-hidden rounded-xl bg-white p-8 shadow-sm ring-1 ring-neutral-100 transition-all hover:shadow-xl hover:-translate-y-1" onclick="window.location.href='{{ route('servicios') }}'">
                     <div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-lg bg-neutral-100 text-secondary transition-colors group-hover:bg-primary group-hover:text-white">
                         <span class="material-symbols-outlined text-3xl">apartment</span>
                     </div>
@@ -105,7 +105,7 @@
                 </div>
 
                 {{-- Service 2 --}}
-                <div class="group relative overflow-hidden rounded-xl bg-white p-8 shadow-sm ring-1 ring-neutral-100 transition-all hover:shadow-xl hover:-translate-y-1">
+                <div class="group relative overflow-hidden rounded-xl bg-white p-8 shadow-sm ring-1 ring-neutral-100 transition-all hover:shadow-xl hover:-translate-y-1" onclick="window.location.href='{{ route('servicios') }}'">
                     <div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-lg bg-neutral-100 text-secondary transition-colors group-hover:bg-primary group-hover:text-white">
                         <span class="material-symbols-outlined text-3xl">engineering</span>
                     </div>
@@ -115,7 +115,7 @@
                 </div>
 
                 {{-- Service 3 --}}
-                <div class="group relative overflow-hidden rounded-xl bg-white p-8 shadow-sm ring-1 ring-neutral-100 transition-all hover:shadow-xl hover:-translate-y-1">
+                <div class="group relative overflow-hidden rounded-xl bg-white p-8 shadow-sm ring-1 ring-neutral-100 transition-all hover:shadow-xl hover:-translate-y-1" onclick="window.location.href='{{ route('servicios') }}'">
                     <div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-lg bg-neutral-100 text-secondary transition-colors group-hover:bg-primary group-hover:text-white">
                         <span class="material-symbols-outlined text-3xl">construction</span>
                     </div>
@@ -125,7 +125,7 @@
                 </div>
 
                 {{-- Service 4 --}}
-                <div class="group relative overflow-hidden rounded-xl bg-white p-8 shadow-sm ring-1 ring-neutral-100 transition-all hover:shadow-xl hover:-translate-y-1">
+                <div class="group relative overflow-hidden rounded-xl bg-white p-8 shadow-sm ring-1 ring-neutral-100 transition-all hover:shadow-xl hover:-translate-y-1" onclick="window.location.href='{{ route('servicios') }}'">
                     <div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-lg bg-neutral-100 text-secondary transition-colors group-hover:bg-primary group-hover:text-white">
                         <span class="material-symbols-outlined text-3xl">draw</span>
                     </div>
