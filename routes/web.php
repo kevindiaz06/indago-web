@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ContactoController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'inicio')->name('inicio');
@@ -10,6 +11,8 @@ Route::view('/proyectos', 'proyectos')->name('proyectos');
 Route::view('/blog', 'blog')->name('blog');
 Route::view('/privacidad', 'privacidad')->name('privacidad');
 Route::view('/terminos', 'terminos')->name('terminos');
+
+Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto.enviar');
 
 
 Route::view('dashboard', 'dashboard')

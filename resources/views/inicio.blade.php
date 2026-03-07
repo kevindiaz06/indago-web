@@ -292,7 +292,8 @@
 
                     {{-- Left: Glassmorphism Form Card (3 cols) --}}
                     <div class="lg:col-span-3 rounded-2xl border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-xl lg:p-10">
-                        <form class="space-y-6" id="contacto-form">
+                        <form class="space-y-6" id="contacto-form" action="{{ route('contacto.enviar') }}" method="POST">
+                            @csrf
 
                             {{-- Row 1: Nombre Completo + Correo Electrónico --}}
                             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -305,6 +306,7 @@
                                         placeholder="Juan Pérez"
                                         type="text"
                                         name="nombre"
+                                        value="{{ old('nombre') }}"
                                         required
                                     />
                                 </div>
@@ -317,6 +319,7 @@
                                         placeholder="correo@ejemplo.com"
                                         type="email"
                                         name="email"
+                                        value="{{ old('email') }}"
                                         required
                                     />
                                 </div>
@@ -333,6 +336,7 @@
                                         placeholder="+1 809 123 4567"
                                         type="tel"
                                         name="telefono"
+                                        value="{{ old('telefono') }}"
                                         required
                                     />
                                 </div>
@@ -345,9 +349,9 @@
                                         name="tipo_obra"
                                         required
                                     >
-                                        <option value="" class="bg-secondary">Selecciona una opción</option>
-                                        <option class="bg-secondary" value="civil">Ingeniería Civil</option>
-                                        <option class="bg-secondary" value="arquitectonico">Diseño Arquitectónico</option>
+                                        <option value="" class="bg-secondary" {{ old('tipo_obra') == '' ? 'selected' : '' }}>Selecciona una opción</option>
+                                        <option class="bg-secondary" value="civil" {{ old('tipo_obra') == 'civil' ? 'selected' : '' }}>Ingeniería Civil</option>
+                                        <option class="bg-secondary" value="arquitectonico" {{ old('tipo_obra') == 'arquitectonico' ? 'selected' : '' }}>Diseño Arquitectónico</option>
                                     </select>
                                 </div>
                             </div>
@@ -362,6 +366,7 @@
                                     placeholder="Nombre de tu empresa o razón social"
                                     type="text"
                                     name="empresa"
+                                    value="{{ old('empresa') }}"
                                 />
                             </div>
 
@@ -376,7 +381,7 @@
                                     rows="4"
                                     name="mensaje"
                                     required
-                                ></textarea>
+                                >{{ old('mensaje') }}</textarea>
                             </div>
 
                             {{-- Required fields note + Submit --}}
@@ -476,5 +481,51 @@
             </div>
         </div>
     </section>
+
+    {{-- SweetAlert2 CDN --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {{-- Script de Alerta con diseño oscuro/naranja integrado a tu tema --}}
+    @if(session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    title: '¡Recibido!',
+                    text: '{{ session('success') }}',
+                    icon: 'success',
+                    background: '#242424',
+                    color: '#ffffff',
+                    iconColor: '#fca311',
+                    confirmButtonColor: '#fca311',
+                    confirmButtonText: 'Aceptar',
+                    customClass: {
+                        popup: 'border border-white/10 rounded-2xl shadow-2xl',
+                        title: 'font-display font-black text-2xl',
+                        confirmButton: 'rounded-xl px-10 py-3 font-bold text-white transition-transform hover:scale-105 shadow-xl shadow-primary/20'
+                    }
+                });
+            });
+        </script>
+    @endif
+
+    {{-- Script de error (Opcional, en caso de fallo de validación) --}}
+    @if($errors->any())
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    title: 'Verifica los campos',
+                    text: 'Asegúrate de haber llenado todos los campos obligatorios y correctamente.',
+                    icon: 'error',
+                    background: '#242424',
+                    color: '#ffffff',
+                    confirmButtonColor: '#fca311',
+                    customClass: {
+                        popup: 'border border-white/10 rounded-2xl shadow-2xl',
+                        confirmButton: 'rounded-xl px-10 py-3 font-bold text-white'
+                    }
+                });
+            });
+        </script>
+    @endif
 
 </x-layouts.public>
