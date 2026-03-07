@@ -15,9 +15,12 @@ Route::view('/terminos', 'terminos')->name('terminos');
 Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto.enviar');
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Middleware\IsAdmin;
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('users', UserController::class)->middleware(IsAdmin::class)->only(['store', 'update', 'destroy']);
 });
 
 Route::middleware('auth')->group(function () {
