@@ -139,6 +139,49 @@
     </section>
 
     {{-- ========================================================
+         Clients / Partners Section
+         ======================================================== --}}
+    <section class="py-16 bg-white overflow-hidden border-y border-neutral-100">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-12 text-center">
+            <h2 class="text-sm font-bold uppercase tracking-widest text-primary mb-2">Alianzas y Clientes</h2>
+            <h3 class="font-display text-3xl font-bold text-secondary tracking-tight">Empresas que confían en nosotros</h3>
+            <p class="mt-4 text-neutral-500 max-w-2xl mx-auto text-lg">Trabajamos con las marcas e instituciones más prestigiosas, manteniendo los más altos estándares de calidad.</p>
+        </div>
+
+        {{-- Infinite Scroll Carousel --}}
+        <div class="relative flex w-full overflow-hidden group">
+            {{-- Fade effects on edges --}}
+            <div class="absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-white to-transparent md:w-32 pointer-events-none"></div>
+            <div class="absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-white to-transparent md:w-32 pointer-events-none"></div>
+
+            {{-- First set of logos --}}
+            <div class="flex shrink-0 animate-marquee items-center justify-around gap-12 sm:gap-20 px-8 group-hover:[animation-play-state:paused] min-w-full">
+                {{-- REEMPLAZAR LOS SRC CON LAS RUTAS DE TUS LOGOS --}}
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Cliente" class="h-10 w-auto object-contain grayscale opacity-50 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-110 cursor-pointer mx-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="Cliente" class="h-10 w-auto object-contain grayscale opacity-50 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-110 cursor-pointer mx-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Cliente" class="h-9 w-auto object-contain grayscale opacity-50 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-110 cursor-pointer mx-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Cliente" class="h-8 w-auto object-contain grayscale opacity-50 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-110 cursor-pointer mx-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" alt="Cliente" class="h-10 w-auto object-contain grayscale opacity-50 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-110 cursor-pointer mx-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Samsung_lettermark.svg" alt="Cliente" class="h-8 w-auto object-contain grayscale opacity-50 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-110 cursor-pointer mx-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png" alt="Cliente" class="h-12 w-auto object-contain grayscale opacity-50 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-110 cursor-pointer mx-2">
+            </div>
+            
+            {{-- Second set (Duplicate) for infinite loop --}}
+            <div class="flex shrink-0 animate-marquee items-center justify-around gap-12 sm:gap-20 px-8 group-hover:[animation-play-state:paused] min-w-full" aria-hidden="true">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Cliente" class="h-10 w-auto object-contain grayscale opacity-50 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-110 cursor-pointer mx-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="Cliente" class="h-10 w-auto object-contain grayscale opacity-50 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-110 cursor-pointer mx-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Cliente" class="h-9 w-auto object-contain grayscale opacity-50 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-110 cursor-pointer mx-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Cliente" class="h-8 w-auto object-contain grayscale opacity-50 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-110 cursor-pointer mx-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" alt="Cliente" class="h-10 w-auto object-contain grayscale opacity-50 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-110 cursor-pointer mx-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Samsung_lettermark.svg" alt="Cliente" class="h-8 w-auto object-contain grayscale opacity-50 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-110 cursor-pointer mx-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png" alt="Cliente" class="h-12 w-auto object-contain grayscale opacity-50 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-110 cursor-pointer mx-2">
+            </div>
+        </div>
+        
+
+    </section>
+
+    {{-- ========================================================
          Featured Projects
          ======================================================== --}}
     <section class="py-24 bg-neutral-100">
@@ -351,7 +394,11 @@
                                     >
                                         <option value="" class="bg-secondary" {{ old('tipo_obra') == '' ? 'selected' : '' }}>Selecciona una opción</option>
                                         <option class="bg-secondary" value="civil" {{ old('tipo_obra') == 'civil' ? 'selected' : '' }}>Ingeniería Civil</option>
+                                        <option class="bg-secondary" value="vial" {{ old('tipo_obra') == 'vial' ? 'selected' : '' }}>Ingeniería Vial</option>
+                                        <option class="bg-secondary" value="hidraulica" {{ old('tipo_obra') == 'hidraulica' ? 'selected' : '' }}>Ingeniería hidráulica</option>
                                         <option class="bg-secondary" value="arquitectonico" {{ old('tipo_obra') == 'arquitectonico' ? 'selected' : '' }}>Diseño Arquitectónico</option>
+                                        <option class="bg-secondary" value="presupuesto" {{ old('tipo_obra') == 'presupuesto' ? 'selected' : '' }}>Presupuesto</option>
+                                        <option class="bg-secondary" value="asesoria" {{ old('tipo_obra') == 'asesoria' ? 'selected' : '' }}>Asesoría</option>
                                     </select>
                                 </div>
                             </div>
@@ -528,38 +575,6 @@
         </script>
     @endif
 
-    {{-- Script para prevenir múltiples envíos de formulario --}}
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const formObj = document.getElementById('contacto-form');
-            if(formObj) {
-                formObj.addEventListener('submit', function(e) {
-                    const btn = this.querySelector('button[type="submit"]');
-                    
-                    // Si ya está deshabilitado, previene el evento
-                    if(btn.disabled) {
-                        e.preventDefault();
-                        return;
-                    }
 
-                    // Deshabilita el botón y cambia el aspecto
-                    btn.disabled = true;
-                    btn.classList.add('opacity-75', 'cursor-not-allowed');
-
-                    // Cambia el HTML interno para mostrar un spinner y el texto "Enviando..."
-                    btn.innerHTML = `
-                        <span class="relative z-10 flex items-center justify-center gap-2">
-                            <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Enviando...
-                        </span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-primary opacity-0 transition-opacity"></div>
-                    `;
-                });
-            }
-        });
-    </script>
 
 </x-layouts.public>
