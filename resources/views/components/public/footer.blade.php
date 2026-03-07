@@ -121,8 +121,8 @@
         <div class="border-t border-white/10 pt-6 pb-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-neutral-500">
             <p>© {{ date('Y') }} Indago Constructora. Todos los derechos reservados.</p>
             <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
-                <a class="hover:text-primary hover:-translate-y-0.5 transition-transform" href="#">Aviso de Privacidad</a>
-                <a class="hover:text-primary hover:-translate-y-0.5 transition-transform" href="#">Términos y Condiciones</a>
+                <a class="hover:text-primary hover:-translate-y-0.5 transition-transform" href="{{ route('privacidad') }}">Aviso de Privacidad</a>
+                <a class="hover:text-primary hover:-translate-y-0.5 transition-transform" href="{{ route('terminos') }}">Términos y Condiciones</a>
             </div>
         </div>
     </div>

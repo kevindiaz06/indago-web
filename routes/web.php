@@ -8,6 +8,8 @@ Route::view('/nosotros', 'nosotros')->name('nosotros');
 Route::view('/servicios', 'servicios')->name('servicios');
 Route::view('/proyectos', 'proyectos')->name('proyectos');
 Route::view('/blog', 'blog')->name('blog');
+Route::view('/privacidad', 'privacidad')->name('privacidad');
+Route::view('/terminos', 'terminos')->name('terminos');
 
 
 Route::view('dashboard', 'dashboard')
