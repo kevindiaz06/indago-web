@@ -14,10 +14,11 @@ Route::view('/terminos', 'terminos')->name('terminos');
 
 Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto.enviar');
 
+use App\Http\Controllers\Admin\DashboardController;
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
