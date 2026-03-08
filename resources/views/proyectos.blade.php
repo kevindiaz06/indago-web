@@ -63,137 +63,45 @@
             <div id="proyecto-grid" class="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
 
                 @php
-                $proyectos = [
-                    [
-                        'id'        => 'p1',
-                        'titulo'    => 'Torre Aqua Residences',
-                        'ubicacion' => 'Piantini, Santo Domingo',
-                        'tipo'      => 'residencial',
-                        'estado'    => 'ejecucion',
-                        'badge'     => 'En Ejecución',
-                        'badge_color' => 'bg-amber-400 text-amber-900',
-                        'm2'        => '8,400 m²',
-                        'pisos'     => '18 Pisos',
-                        'tiempo'    => '28 meses',
-                        'cliente'   => 'Grupo Aqua RD',
-                        'img'       => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCjyRgwfDbCRtl8Yy2SCRczQ4aZkCLvcwQOR9s1ALRUZuIovvE7lEvIl1YSPUt3EshBiqJK2w1Q-XecQLsU0NvVq3InpguGm7Vu7kaeDXG1ev0JkNdPA80AK4prnIamHMoyOOrHV6JyVBDBG_8YRYv3Z0mTFTNgMsyk0WlhEhjIwZtHzfylYaiVtfJZassh2gk6QhR8mphf0c0Wkz2CsVwSSdhwR5EVaLlJRZrGfPp_vHd-nUTh6ZaZZd2Hy3G2zJrZxvWSo1TfmHs',
-                        'galeria'   => ['https://lh3.googleusercontent.com/aida-public/AB6AXuCjyRgwfDbCRtl8Yy2SCRczQ4aZkCLvcwQOR9s1ALRUZuIovvE7lEvIl1YSPUt3EshBiqJK2w1Q-XecQLsU0NvVq3InpguGm7Vu7kaeDXG1ev0JkNdPA80AK4prnIamHMoyOOrHV6JyVBDBG_8YRYv3Z0mTFTNgMsyk0WlhEhjIwZtHzfylYaiVtfJZassh2gk6QhR8mphf0c0Wkz2CsVwSSdhwR5EVaLlJRZrGfPp_vHd-nUTh6ZaZZd2Hy3G2zJrZxvWSo1TfmHs','https://lh3.googleusercontent.com/aida-public/AB6AXuCVvpXvUKpHDaWrd8KTYho9VV4SBUS9DqqdJF_qVVcfuGwXSvawfVbnsCGwngDoBgpnq8PtSMQca01MzIRUFKyoPaGYf8FwgaqrKPIA6jd3wd4QKaNs1i-HJOkU4Ud36hjiEWawsoJCvBXS4uktmfNfj1vwvwJ3kbu4rTAnLrbfQ0f7sKMoo2Mxwb7fJ0lGykv1Xid_O-T9aSPGBqGQiZhsjoccGLwFvgx26PiUgGqQBuv5sEY55nulM4I69EcB6e3I3r3fgYAjNFA'],
-                        'reto'      => 'La torre se construye sobre un terreno comprimido en zona de alta densidad urbana. El reto principal fue la cimentación profunda con pilotes helicoidales y el manejo de desvíos de tráfico durante la fase de excavación.',
-                    ],
-                    [
-                        'id'        => 'p2',
-                        'titulo'    => 'Plaza Comercial InduSur',
-                        'ubicacion' => 'Boca Chica, Santo Domingo Este',
-                        'tipo'      => 'comercial',
-                        'estado'    => 'finalizado',
-                        'badge'     => 'Finalizado',
-                        'badge_color' => 'bg-green-400 text-green-900',
-                        'm2'        => '12,000 m²',
-                        'pisos'     => '3 Plantas',
-                        'tiempo'    => '18 meses',
-                        'cliente'   => 'InduSur Investment',
-                        'img'       => 'https://lh3.googleusercontent.com/aida-public/AB6AXuCVvpXvUKpHDaWrd8KTYho9VV4SBUS9DqqdJF_qVVcfuGwXSvawfVbnsCGwngDoBgpnq8PtSMQca01MzIRUFKyoPaGYf8FwgaqrKPIA6jd3wd4QKaNs1i-HJOkU4Ud36hjiEWawsoJCvBXS4uktmfNfj1vwvwJ3kbu4rTAnLrbfQ0f7sKMoo2Mxwb7fJ0lGykv1Xid_O-T9aSPGBqGQiZhsjoccGLwFvgx26PiUgGqQBuv5sEY55nulM4I69EcB6e3I3r3fgYAjNFA',
-                        'galeria'   => ['https://lh3.googleusercontent.com/aida-public/AB6AXuCVvpXvUKpHDaWrd8KTYho9VV4SBUS9DqqdJF_qVVcfuGwXSvawfVbnsCGwngDoBgpnq8PtSMQca01MzIRUFKyoPaGYf8FwgaqrKPIA6jd3wd4QKaNs1i-HJOkU4Ud36hjiEWawsoJCvBXS4uktmfNfj1vwvwJ3kbu4rTAnLrbfQ0f7sKMoo2Mxwb7fJ0lGykv1Xid_O-T9aSPGBqGQiZhsjoccGLwFvgx26PiUgGqQBuv5sEY55nulM4I69EcB6e3I3r3fgYAjNFA','https://lh3.googleusercontent.com/aida-public/AB6AXuDdlQJnNzaaXsRUTVKSvFPss7OVxlLfaCNgAI2bt3tDydVlHofZomK-J_OOc58qoRH7sMKA4ecP6DEWU2Q3WXVjCXLy719CsSsM1s4OWYHcuv0dkN6w-ry3UoB57g-kjDH_Z5oXDcyDyTn-SaTSgakPUzo05UyHaC1QisnfDx_HNdld6QvhY4QoLgD06oPFMZYLWmuQjLktAiShHMjplxO9ml8mxWKcfRJvu38yK3mfOa_p2VtAgaUlSbHhL5KeC-bc6f5Jhcs7GMA'],
-                        'reto'      => 'Coordinación logística de más de 200 proveedores simultáneos y montaje estructural de vigas de 40m en zona costera con vientos adversos, cumpliendo el cronograma sin desviaciones.',
-                    ],
-                    [
-                        'id'        => 'p3',
-                        'titulo'    => 'Nave Industrial FrigoNorte',
-                        'ubicacion' => 'Santiago de los Caballeros',
-                        'tipo'      => 'industrial',
-                        'estado'    => 'finalizado',
-                        'badge'     => 'Finalizado',
-                        'badge_color' => 'bg-green-400 text-green-900',
-                        'm2'        => '6,200 m²',
-                        'pisos'     => '1 Planta + Mezzanine',
-                        'tiempo'    => '12 meses',
-                        'cliente'   => 'FrigoNorte S.A.',
-                        'img'       => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDdlQJnNzaaXsRUTVKSvFPss7OVxlLfaCNgAI2bt3tDydVlHofZomK-J_OOc58qoRH7sMKA4ecP6DEWU2Q3WXVjCXLy719CsSsM1s4OWYHcuv0dkN6w-ry3UoB57g-kjDH_Z5oXDcyDyTn-SaTSgakPUzo05UyHaC1QisnfDx_HNdld6QvhY4QoLgD06oPFMZYLWmuQjLktAiShHMjplxO9ml8mxWKcfRJvu38yK3mfOa_p2VtAgaUlSbHhL5KeC-bc6f5Jhcs7GMA',
-                        'galeria'   => ['https://lh3.googleusercontent.com/aida-public/AB6AXuDdlQJnNzaaXsRUTVKSvFPss7OVxlLfaCNgAI2bt3tDydVlHofZomK-J_OOc58qoRH7sMKA4ecP6DEWU2Q3WXVjCXLy719CsSsM1s4OWYHcuv0dkN6w-ry3UoB57g-kjDH_Z5oXDcyDyTn-SaTSgakPUzo05UyHaC1QisnfDx_HNdld6QvhY4QoLgD06oPFMZYLWmuQjLktAiShHMjplxO9ml8mxWKcfRJvu38yK3mfOa_p2VtAgaUlSbHhL5KeC-bc6f5Jhcs7GMA','https://lh3.googleusercontent.com/aida-public/AB6AXuBx1UmMJG8uucbHKXwEXYfja1UEL6hd9hX9qLjL9kOVBA7WUipbkXk_TnytGK0Spz8_ybcKDKPCcEsf3kbEmdYZFrr3c35pSu7ClDoHg2iOcf3FoMPc8A4AQp_TXX85AmVhW-7_MfGVTR0pp9Gka5ij9WJjjbD8MU8dHpdagShkuT3SPqu5vl97LDfN8S7tK5RFu8TA1pJZI4NaMNBZguPFP9Cb1qscTut92WeJZvKtf331eqIdtizZguAB218gIl2_Lr-uFhrG16o'],
-                        'reto'      => 'Instalación de un sistema de cámaras frigoríficas industriales de -25°C integradas a la estructura de acero. Requirió coordinación milimétrica entre la fase civil y la instalación de equipos de refrigeración.',
-                    ],
-                    [
-                        'id'        => 'p4',
-                        'titulo'    => 'Urbanización Las Palmas',
-                        'ubicacion' => 'La Romana',
-                        'tipo'      => 'residencial',
-                        'estado'    => 'finalizado',
-                        'badge'     => 'Finalizado',
-                        'badge_color' => 'bg-green-400 text-green-900',
-                        'm2'        => '32,000 m²',
-                        'pisos'     => '72 Villas',
-                        'tiempo'    => '36 meses',
-                        'cliente'   => 'Desarrollos Caribe',
-                        'img'       => 'https://lh3.googleusercontent.com/aida-public/AB6AXuBx1UmMJG8uucbHKXwEXYfja1UEL6hd9hX9qLjL9kOVBA7WUipbkXk_TnytGK0Spz8_ybcKDKPCcEsf3kbEmdYZFrr3c35pSu7ClDoHg2iOcf3FoMPc8A4AQp_TXX85AmVhW-7_MfGVTR0pp9Gka5ij9WJjjbD8MU8dHpdagShkuT3SPqu5vl97LDfN8S7tK5RFu8TA1pJZI4NaMNBZguPFP9Cb1qscTut92WeJZvKtf331eqIdtizZguAB218gIl2_Lr-uFhrG16o',
-                        'galeria'   => ['https://lh3.googleusercontent.com/aida-public/AB6AXuBx1UmMJG8uucbHKXwEXYfja1UEL6hd9hX9qLjL9kOVBA7WUipbkXk_TnytGK0Spz8_ybcKDKPCcEsf3kbEmdYZFrr3c35pSu7ClDoHg2iOcf3FoMPc8A4AQp_TXX85AmVhW-7_MfGVTR0pp9Gka5ij9WJjjbD8MU8dHpdagShkuT3SPqu5vl97LDfN8S7tK5RFu8TA1pJZI4NaMNBZguPFP9Cb1qscTut92WeJZvKtf331eqIdtizZguAB218gIl2_Lr-uFhrG16o','https://lh3.googleusercontent.com/aida-public/AB6AXuCjyRgwfDbCRtl8Yy2SCRczQ4aZkCLvcwQOR9s1ALRUZuIovvE7lEvIl1YSPUt3EshBiqJK2w1Q-XecQLsU0NvVq3InpguGm7Vu7kaeDXG1ev0JkNdPA80AK4prnIamHMoyOOrHV6JyVBDBG_8YRYv3Z0mTFTNgMsyk0WlhEhjIwZtHzfylYaiVtfJZassh2gk6QhR8mphf0c0Wkz2CsVwSSdhwR5EVaLlJRZrGfPp_vHd-nUTh6ZaZZd2Hy3G2zJrZxvWSo1TfmHs'],
-                        'reto'      => 'Desarrollo en lote de topografía irregular que obligó a un movimiento de tierra de 45,000 m³ y diseño de vías internas con pendientes adaptadas al terreno natural, manteniendo la estética del conjunto.',
-                    ],
-                    [
-                        'id'        => 'p5',
-                        'titulo'    => 'Carretera Acceso Norte – Km 14',
-                        'ubicacion' => 'Autopista Duarte, SDN',
-                        'tipo'      => 'civil',
-                        'estado'    => 'finalizado',
-                        'badge'     => 'Finalizado',
-                        'badge_color' => 'bg-green-400 text-green-900',
-                        'm2'        => '4.2 km de vía',
-                        'pisos'     => 'Doble calzada',
-                        'tiempo'    => '10 meses',
-                        'cliente'   => 'MOPC – República Dominicana',
-                        'img'       => 'https://lh3.googleusercontent.com/aida-public/AB6AXuAhGDEZ9vIzTKNqLovc5XRYi89t1WivczkHuuDDp1mgFvjFIlMTJv5DoGNYZQ2c8FBCK8XmP8qVnbycmQ3Y3tKW5hn_YiU1bZ9TqSqnNGMFj0Gvv3PYxfgxdBuVhPvuHR5pK_aIETAv-5kkV9e5lRr7HvH-p8DK2Zn_6iLv4d9RdqKo3m8wQjdV2FMoJ56WsJXXi-2MlN_sZqcXuY7bvU13Yc1QJqaHzE1Nq7pZ1eNHHLwkjEp5d4P0',
-                        'galeria'   => ['https://lh3.googleusercontent.com/aida-public/AB6AXuAhGDEZ9vIzTKNqLovc5XRYi89t1WivczkHuuDDp1mgFvjFIlMTJv5DoGNYZQ2c8FBCK8XmP8qVnbycmQ3Y3tKW5hn_YiU1bZ9TqSqnNGMFj0Gvv3PYxfgxdBuVhPvuHR5pK_aIETAv-5kkV9e5lRr7HvH-p8DK2Zn_6iLv4d9RdqKo3m8wQjdV2FMoJ56WsJXXi-2MlN_sZqcXuY7bvU13Yc1QJqaHzE1Nq7pZ1eNHHLwkjEp5d4P0','https://lh3.googleusercontent.com/aida-public/AB6AXuCVvpXvUKpHDaWrd8KTYho9VV4SBUS9DqqdJF_qVVcfuGwXSvawfVbnsCGwngDoBgpnq8PtSMQca01MzIRUFKyoPaGYf8FwgaqrKPIA6jd3wd4QKaNs1i-HJOkU4Ud36hjiEWawsoJCvBXS4uktmfNfj1vwvwJ3kbu4rTAnLrbfQ0f7sKMoo2Mxwb7fJ0lGykv1Xid_O-T9aSPGBqGQiZhsjoccGLwFvgx26PiUgGqQBuv5sEY55nulM4I69EcB6e3I3r3fgYAjNFA'],
-                        'reto'      => 'Rehabilitación y ensanche de una vía de alto tráfico sin cierre total de la carretera. Se trabajó en horarios nocturnos con señalización especial y coordinación con la DIGESETT para flujo alterno.',
-                    ],
-                    [
-                        'id'        => 'p6',
-                        'titulo'    => 'Edificio Corporativo Blue Tower',
-                        'ubicacion' => 'Bella Vista, Santo Domingo',
-                        'tipo'      => 'comercial ejecucion',
-                        'estado'    => 'ejecucion',
-                        'badge'     => 'En Ejecución',
-                        'badge_color' => 'bg-amber-400 text-amber-900',
-                        'm2'        => '9,800 m²',
-                        'pisos'     => '22 Pisos',
-                        'tiempo'    => '32 meses',
-                        'cliente'   => 'Blue Group Corp.',
-                        'img'       => 'https://lh3.googleusercontent.com/aida-public/AB6AXuD3Y18_Q3MLN_kagSJUirckmWlWltF8eYFzHS6qa5byMJK7sG6tRXaPJnCE6zzi0WrdR2P4NTctGRdSEBDl4xHtqHMcBs5hKl_09eFua_7lsP8hwp9Q6DLoprrmxUrtj7mdATuEXWOZLQtwiidcPJmMd1QfMsBjTnqLTz1rgBA_IxtIjy96iZ6vfoxUyHrZn0eOqfwPwqwVt6FS64upYL-dR90RU2dEj9HKNgDZQBDxrAu04JUo7sJc8qLbwqXH4Cp5q36IMgrAwgM',
-                        'galeria'   => ['https://lh3.googleusercontent.com/aida-public/AB6AXuD3Y18_Q3MLN_kagSJUirckmWlWltF8eYFzHS6qa5byMJK7sG6tRXaPJnCE6zzi0WrdR2P4NTctGRdSEBDl4xHtqHMcBs5hKl_09eFua_7lsP8hwp9Q6DLoprrmxUrtj7mdATuEXWOZLQtwiidcPJmMd1QfMsBjTnqLTz1rgBA_IxtIjy96iZ6vfoxUyHrZn0eOqfwPwqwVt6FS64upYL-dR90RU2dEj9HKNgDZQBDxrAu04JUo7sJc8qLbwqXH4Cp5q36IMgrAwgM','https://lh3.googleusercontent.com/aida-public/AB6AXuDdlQJnNzaaXsRUTVKSvFPss7OVxlLfaCNgAI2bt3tDydVlHofZomK-J_OOc58qoRH7sMKA4ecP6DEWU2Q3WXVjCXLy719CsSsM1s4OWYHcuv0dkN6w-ry3UoB57g-kjDH_Z5oXDcyDyTn-SaTSgakPUzo05UyHaC1QisnfDx_HNdld6QvhY4QoLgD06oPFMZYLWmuQjLktAiShHMjplxO9ml8mxWKcfRJvu38yK3mfOa_p2VtAgaUlSbHhL5KeC-bc6f5Jhcs7GMA'],
-                        'reto'      => 'Construcción en zona de alta densidad con restricciones de grúa por espacio aéreo del aeropuerto. Se utilizó sistema trepante lateral y hormigón de alta resistencia (60 MPa) para reducir el peralte de losas.',
-                    ],
-                ];
+                // Los proyectos vienen dinámicamente desde el controlador
                 @endphp
 
                 @foreach($proyectos as $p)
+                @php
+                    $badge = $p->estado === 'ejecucion' ? 'En Ejecución' : 'Finalizado';
+                    $badge_color = $p->estado === 'ejecucion' ? 'bg-amber-400 text-amber-900' : 'bg-green-400 text-green-900';
+                    $imgUrl = $p->img ? asset('storage/' . $p->img) : 'https://placehold.co/800x600/e2e8f0/64748b?text=Procesando...';
+                @endphp
                 <div
                     class="proyecto-card group relative overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-neutral-100 cursor-pointer transition-all hover:-translate-y-2 hover:shadow-2xl"
-                    data-tipo="{{ $p['tipo'] }}"
-                    data-estado="{{ $p['estado'] }}"
-                    data-id="{{ $p['id'] }}"
+                    data-tipo="{{ $p->tipo }}"
+                    data-estado="{{ $p->estado }}"
+                    data-id="p-{{ $p->id }}"
                 >
                     {{-- Imagen --}}
                     <div class="relative h-60 overflow-hidden">
-                        <img alt="{{ $p['titulo'] }}" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="{{ $p['img'] }}">
+                        <img alt="{{ $p->titulo }}" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="{{ $imgUrl }}">
                         <div class="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/20 to-transparent"></div>
 
                         {{-- Badge estado --}}
                         <div class="absolute top-4 left-4">
-                            <span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold {{ $p['badge_color'] }}">
-                                <span class="flex h-1.5 w-1.5 rounded-full {{ $p['estado'] === 'ejecucion' ? 'bg-amber-700 animate-pulse' : 'bg-green-700' }}"></span>
-                                {{ $p['badge'] }}
+                            <span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold {{ $badge_color }}">
+                                <span class="flex h-1.5 w-1.5 rounded-full {{ $p->estado === 'ejecucion' ? 'bg-amber-700 animate-pulse' : 'bg-green-700' }}"></span>
+                                {{ $badge }}
                             </span>
                         </div>
 
                         {{-- Tipo --}}
                         <div class="absolute top-4 right-4">
-                            <span class="rounded-full bg-white/20 backdrop-blur-sm border border-white/30 px-3 py-1 text-xs font-semibold text-white capitalize">{{ explode(' ', $p['tipo'])[0] }}</span>
+                            <span class="rounded-full bg-white/20 backdrop-blur-sm border border-white/30 px-3 py-1 text-xs font-semibold text-white capitalize">{{ explode(' ', $p->tipo)[0] }}</span>
                         </div>
 
                         {{-- Info en imagen --}}
                         <div class="absolute bottom-4 left-4 right-4">
-                            <h3 class="text-lg font-black text-white leading-tight">{{ $p['titulo'] }}</h3>
+                            <h3 class="text-lg font-black text-white leading-tight">{{ $p->titulo }}</h3>
                             <p class="mt-1 flex items-center gap-1 text-sm text-neutral-300">
                                 <span class="material-symbols-outlined text-[14px] text-primary">location_on</span>
-                                {{ $p['ubicacion'] }}
+                                {{ $p->ubicacion }}
                             </p>
                         </div>
 
@@ -209,8 +117,8 @@
                     {{-- Footer tarjeta --}}
                     <div class="flex items-center justify-between p-4">
                         <div class="flex gap-4 text-xs text-neutral-500">
-                            <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-secondary">square_foot</span> {{ $p['m2'] }}</span>
-                            <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-secondary">schedule</span> {{ $p['tiempo'] }}</span>
+                            <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-secondary">square_foot</span> {{ $p->m2 }}</span>
+                            <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-secondary">schedule</span> {{ $p->tiempo }}</span>
                         </div>
                         <span class="text-xs font-semibold text-primary">Ver más →</span>
                     </div>
@@ -239,29 +147,52 @@
             </button>
 
             @foreach($proyectos as $p)
-            <div id="modal-{{ $p['id'] }}" class="modal-content hidden">
+            @php
+                $badge = $p->estado === 'ejecucion' ? 'En Ejecución' : 'Finalizado';
+                $badge_color = $p->estado === 'ejecucion' ? 'bg-amber-400 text-amber-900' : 'bg-green-400 text-green-900';
+            @endphp
+            <div id="modal-p-{{ $p->id }}" class="modal-content hidden">
 
                 {{-- Galería --}}
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-1">
-                    @foreach($p['galeria'] as $i => $foto)
-                    <div class="relative {{ $i === 0 ? 'sm:col-span-2 h-72' : 'h-48' }} overflow-hidden {{ $i === 0 ? 'rounded-t-2xl' : '' }}">
-                        <img alt="Foto {{ $i+1 }} de {{ $p['titulo'] }}" class="h-full w-full object-cover" src="{{ $foto }}">
-                        @if($i === 0)
-                        <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent"></div>
-                        <div class="absolute bottom-5 left-6">
-                            <h2 class="text-2xl font-black text-white">{{ $p['titulo'] }}</h2>
-                            <p class="flex items-center gap-1 text-sm text-neutral-300 mt-1">
-                                <span class="material-symbols-outlined text-[14px] text-primary">location_on</span> {{ $p['ubicacion'] }}
-                            </p>
+                    @if(is_array($p->galeria) && count($p->galeria) > 0)
+                        @foreach($p->galeria as $i => $foto)
+                        <div class="relative {{ $i === 0 ? 'sm:col-span-2 h-72' : 'h-48' }} overflow-hidden {{ $i === 0 ? 'rounded-t-2xl' : '' }}">
+                            <img alt="Foto {{ $i+1 }} de {{ $p->titulo }}" class="h-full w-full object-cover" src="{{ asset('storage/' . $foto) }}">
+                            @if($i === 0)
+                            <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent"></div>
+                            <div class="absolute bottom-5 left-6">
+                                <h2 class="text-2xl font-black text-white">{{ $p->titulo }}</h2>
+                                <p class="flex items-center gap-1 text-sm text-neutral-300 mt-1">
+                                    <span class="material-symbols-outlined text-[14px] text-primary">location_on</span> {{ $p->ubicacion }}
+                                </p>
+                            </div>
+                            <div class="absolute top-5 right-6">
+                                <span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold {{ $badge_color }}">
+                                    {{ $badge }}
+                                </span>
+                            </div>
+                            @endif
                         </div>
-                        <div class="absolute top-5 right-6">
-                            <span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold {{ $p['badge_color'] }}">
-                                {{ $p['badge'] }}
-                            </span>
+                        @endforeach
+                    @else
+                        {{-- Imagen principal si no hay galeria --}}
+                        <div class="relative sm:col-span-2 h-72 overflow-hidden rounded-t-2xl">
+                            <img alt="{{ $p->titulo }}" class="h-full w-full object-cover" src="{{ $p->img ? asset('storage/' . $p->img) : 'https://placehold.co/800x600/e2e8f0/64748b?text=Procesando...' }}">
+                            <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent"></div>
+                            <div class="absolute bottom-5 left-6">
+                                <h2 class="text-2xl font-black text-white">{{ $p->titulo }}</h2>
+                                <p class="flex items-center gap-1 text-sm text-neutral-300 mt-1">
+                                    <span class="material-symbols-outlined text-[14px] text-primary">location_on</span> {{ $p->ubicacion }}
+                                </p>
+                            </div>
+                            <div class="absolute top-5 right-6">
+                                <span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold {{ $badge_color }}">
+                                    {{ $badge }}
+                                </span>
+                            </div>
                         </div>
-                        @endif
-                    </div>
-                    @endforeach
+                    @endif
                 </div>
 
                 <div class="p-7">
@@ -269,34 +200,36 @@
                     <div class="mb-7 grid grid-cols-2 gap-4 sm:grid-cols-4">
                         <div class="rounded-xl bg-neutral-50 border border-neutral-100 p-4 text-center">
                             <span class="material-symbols-outlined text-secondary text-2xl">square_foot</span>
-                            <span class="mt-1 block text-lg font-black text-secondary">{{ $p['m2'] }}</span>
+                            <span class="mt-1 block text-lg font-black text-secondary">{{ $p->m2 }}</span>
                             <span class="text-xs uppercase tracking-wider text-neutral-400">Superficie</span>
                         </div>
                         <div class="rounded-xl bg-neutral-50 border border-neutral-100 p-4 text-center">
                             <span class="material-symbols-outlined text-secondary text-2xl">apartment</span>
-                            <span class="mt-1 block text-lg font-black text-secondary">{{ $p['pisos'] }}</span>
+                            <span class="mt-1 block text-lg font-black text-secondary">{{ $p->pisos }}</span>
                             <span class="text-xs uppercase tracking-wider text-neutral-400">Estructura</span>
                         </div>
                         <div class="rounded-xl bg-neutral-50 border border-neutral-100 p-4 text-center">
                             <span class="material-symbols-outlined text-secondary text-2xl">schedule</span>
-                            <span class="mt-1 block text-lg font-black text-secondary">{{ $p['tiempo'] }}</span>
+                            <span class="mt-1 block text-lg font-black text-secondary">{{ $p->tiempo }}</span>
                             <span class="text-xs uppercase tracking-wider text-neutral-400">Duración</span>
                         </div>
                         <div class="rounded-xl bg-neutral-50 border border-neutral-100 p-4 text-center">
                             <span class="material-symbols-outlined text-secondary text-2xl">groups</span>
-                            <span class="mt-1 block text-sm font-black text-secondary leading-tight">{{ $p['cliente'] }}</span>
+                            <span class="mt-1 block text-sm font-black text-secondary leading-tight">{{ $p->cliente }}</span>
                             <span class="text-xs uppercase tracking-wider text-neutral-400">Cliente</span>
                         </div>
                     </div>
 
                     {{-- Reto constructivo --}}
+                    @if($p->reto)
                     <div class="rounded-xl bg-secondary/5 border-l-4 border-primary p-5">
                         <h4 class="mb-2 flex items-center gap-2 font-bold text-secondary">
                             <span class="material-symbols-outlined text-primary text-lg">emoji_objects</span>
                             Reto Constructivo Superado
                         </h4>
-                        <p class="text-sm leading-relaxed text-neutral-600">{{ $p['reto'] }}</p>
+                        <p class="text-sm leading-relaxed text-neutral-600">{{ $p->reto }}</p>
                     </div>
+                    @endif
 
                     {{-- CTA --}}
                     <div class="mt-6 flex flex-col sm:flex-row gap-3">
