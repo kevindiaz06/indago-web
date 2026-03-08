@@ -11,6 +11,15 @@ use Illuminate\Validation\Rules;
 class UserController extends Controller
 {
     /**
+     * Display a listing of the users.
+     */
+    public function index()
+    {
+        $users = User::all();
+        return view('admin.users.index', compact('users'));
+    }
+
+    /**
      * Store a newly created user in storage.
      */
     public function store(Request $request)
@@ -29,7 +38,7 @@ class UserController extends Controller
             'role' => $request->role,
         ]);
 
-        return redirect()->route('admin.dashboard')->with('success', 'Usuario creado correctamente.');
+        return redirect()->route('admin.users.index')->with('success', 'Usuario creado correctamente.');
     }
 
     /**
@@ -59,7 +68,7 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return redirect()->route('admin.dashboard')->with('success', 'Usuario actualizado correctamente.');
+        return redirect()->route('admin.users.index')->with('success', 'Usuario actualizado correctamente.');
     }
 
     /**
@@ -68,11 +77,11 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         if (auth()->id() === $user->id) {
-            return redirect()->route('admin.dashboard')->with('error', 'No puedes eliminar tu propia cuenta de administrador.');
+            return redirect()->route('admin.users.index')->with('error', 'No puedes eliminar tu propia cuenta de administrador.');
         }
 
         $user->delete();
 
-        return redirect()->route('admin.dashboard')->with('success', 'Usuario eliminado correctamente.');
+        return redirect()->route('admin.users.index')->with('success', 'Usuario eliminado correctamente.');
     }
 }
