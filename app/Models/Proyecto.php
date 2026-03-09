@@ -8,10 +8,11 @@ class Proyecto extends Model
 {
     protected $fillable = [
         'titulo', 'ubicacion', 'tipo', 'estado', 'm2', 'pisos', 
-        'tiempo', 'cliente', 'img', 'galeria', 'reto'
+        'tiempo', 'cliente', 'destacado', 'img', 'galeria', 'reto'
     ];
 
     protected $casts = [
+        'destacado' => 'boolean',
         'galeria' => 'array'
     ];
 }

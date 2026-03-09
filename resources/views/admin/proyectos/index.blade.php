@@ -48,7 +48,12 @@
                                 @endif
                             </div>
                             <div>
-                                <div class="font-bold">{{ $p->titulo }}</div>
+                                <div class="font-bold flex items-center gap-1.5">
+                                    {{ $p->titulo }}
+                                    @if($p->destacado)
+                                        <span class="material-symbols-outlined text-[16px] text-yellow-500" title="Proyecto Destacado en Inicio">star</span>
+                                    @endif
+                                </div>
                                 <div class="text-xs text-neutral-500">{{ $p->ubicacion }}</div>
                             </div>
                         </div>

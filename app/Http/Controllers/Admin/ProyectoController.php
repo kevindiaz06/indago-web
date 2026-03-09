@@ -36,7 +36,17 @@ class ProyectoController extends Controller
             'galeria.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
+        if ($request->has('destacado')) {
+            $count = Proyecto::where('destacado', true)->count();
+            if ($count >= 3) {
+                throw \Illuminate\Validation\ValidationException::withMessages([
+                    'destacado' => 'Ya existen 3 proyectos destacados en la página de inicio. Por favor, desmarca otro proyecto antes de intentar destacar este nuevo.'
+                ]);
+            }
+        }
+
         $data = $request->except(['img', 'galeria']);
+        $data['destacado'] = $request->has('destacado'); // Checkbox evaluation
 
         if ($request->hasFile('img')) {
             $data['img'] = $request->file('img')->store('proyectos', 'public');
@@ -76,7 +86,17 @@ class ProyectoController extends Controller
             'galeria.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
+        if ($request->has('destacado') && !$proyecto->destacado) {
+            $count = Proyecto::where('destacado', true)->count();
+            if ($count >= 3) {
+                throw \Illuminate\Validation\ValidationException::withMessages([
+                    'destacado' => 'Ya existen 3 proyectos destacados en la página de inicio. Por favor, desmarca otro proyecto antes de intentar destacar este.'
+                ]);
+            }
+        }
+
         $data = $request->except(['img', 'galeria']);
+        $data['destacado'] = $request->has('destacado'); // Checkbox evaluation
 
         if ($request->hasFile('img')) {
             if ($proyecto->img) Storage::disk('public')->delete($proyecto->img);

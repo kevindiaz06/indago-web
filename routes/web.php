@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactoController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'inicio')->name('inicio');
+Route::get('/', [App\Http\Controllers\Public\HomeController::class, 'index'])->name('inicio');
 Route::view('/nosotros', 'nosotros')->name('nosotros');
 Route::view('/servicios', 'servicios')->name('servicios');
 Route::get('/proyectos', [App\Http\Controllers\Public\ProyectoController::class, 'index'])->name('proyectos');

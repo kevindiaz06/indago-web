@@ -103,6 +103,17 @@
             @error('reto') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
         </div>
 
+        {{-- Destacado --}}
+        <div class="mb-6 bg-neutral-50 border border-neutral-200 rounded-xl p-4 flex items-start gap-3">
+            <div class="flex h-6 items-center">
+                <input id="destacado" name="destacado" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" {{ old('destacado', $proyecto->destacado) ? 'checked' : '' }}>
+            </div>
+            <div class="text-sm leading-6">
+                <label for="destacado" class="font-medium text-neutral-900">Destacar en la página de inicio</label>
+                <p class="text-neutral-500">Muestra este proyecto en la sección "Proyectos Destacados" de la página principal. Se recomienda destacar un máximo de 3 proyectos.</p>
+            </div>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             {{-- Imagen Principal --}}
             <div class="rounded-xl border border-neutral-200 bg-neutral-50 p-4">

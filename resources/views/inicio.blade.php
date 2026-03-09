@@ -192,48 +192,34 @@
             </div>
 
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-
-                {{-- Project 1 --}}
-                <div class="group relative h-96 cursor-pointer overflow-hidden rounded-xl">
-                    <img
-                        alt="Torre corporativa de vidrio moderna"
-                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVvpXvUKpHDaWrd8KTYho9VV4SBUS9DqqdJF_qVVcfuGwXSvawfVbnsCGwngDoBgpnq8PtSMQca01MzIRUFKyoPaGYf8FwgaqrKPIA6jd3wd4QKaNs1i-HJOkU4Ud36hjiEWawsoJCvBXS4uktmfNfj1vwvwJ3kbu4rTAnLrbfQ0f7sKMoo2Mxwb7fJ0lGykv1Xid_O-T9aSPGBqGQiZhsjoccGLwFvgx26PiUgGqQBuv5sEY55nulM4I69EcB6e3I3r3fgYAjNFA"
-                    />
+                @forelse($proyectosDestacados as $p)
+                {{-- Dynamic Project Card --}}
+                <div class="group relative h-96 cursor-pointer overflow-hidden rounded-xl {{ $loop->index === 2 ? 'lg:hidden xl:block' : '' }}" onclick="window.location.href='{{ route('proyectos') }}'">
+                    @if($p->img)
+                        <img
+                            alt="{{ $p->titulo }}"
+                            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            src="{{ asset('storage/' . $p->img) }}"
+                        />
+                    @else
+                        <div class="h-full w-full bg-neutral-200 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+                            <span class="material-symbols-outlined text-4xl text-neutral-400">image</span>
+                        </div>
+                    @endif
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end">
-                        <span class="text-sm font-bold text-primary mb-2">Comercial</span>
-                        <h3 class="text-2xl font-bold text-white">Torre Empresarial Indago</h3>
-                        <p class="mt-2 text-sm text-neutral-300 opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">Diseño y construcción integral de edificio corporativo.</p>
+                        <span class="text-sm font-bold text-primary mb-2 capitalize">{{ $p->tipo }}</span>
+                        <h3 class="text-2xl font-bold text-white">{{ $p->titulo }}</h3>
+                        <p class="mt-2 text-sm text-neutral-300 opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 line-clamp-2">
+                            {{ $p->reto ?? $p->ubicacion }}
+                        </p>
                     </div>
                 </div>
-
-                {{-- Project 2 --}}
-                <div class="group relative h-96 cursor-pointer overflow-hidden rounded-xl">
-                    <img
-                        alt="Interior de complejo residencial moderno"
-                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjyRgwfDbCRtl8Yy2SCRczQ4aZkCLvcwQOR9s1ALRUZuIovvE7lEvIl1YSPUt3EshBiqJK2w1Q-XecQLsU0NvVq3InpguGm7Vu7kaeDXG1ev0JkNdPA80AK4prnIamHMoyOOrHV6JyVBDBG_8YRYv3Z0mTFTNgMsyk0WlhEhjIwZtHzfylYaiVtfJZassh2gk6QhR8mphf0c0Wkz2CsVwSSdhwR5EVaLlJRZrGfPp_vHd-nUTh6ZaZZd2Hy3G2zJrZxvWSo1TfmHs"
-                    />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end">
-                        <span class="text-sm font-bold text-primary mb-2">Residencial</span>
-                        <h3 class="text-2xl font-bold text-white">Complejo Residencial La Fé</h3>
-                        <p class="mt-2 text-sm text-neutral-300 opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">24 unidades habitacionales con acabados premium.</p>
-                    </div>
+                @empty
+                <div class="col-span-full py-12 text-center">
+                    <p class="text-neutral-500">Próximamente estaremos publicando nuestros nuevos proyectos destacados.</p>
                 </div>
-
-                {{-- Project 3 --}}
-                <div class="group relative h-96 cursor-pointer overflow-hidden rounded-xl lg:hidden xl:block">
-                    <img
-                        alt="Infraestructura vial moderna"
-                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhGDEZ9vIzTKNqLovc5XRYi89t1WivczkHuuDDp1mgFvjFIlMTJv5DoGNYYNB0tEmC-602Ger1IjNYZGZxxQnbBd68dAtXQpEumj657qBD833Hziyb2sK7CjXPXFQt98qJJfF1ozmRkLXPtTnnaOLP8-tCw6UYAT6BuN7mA7UUPdRxNS3UrJB9C7sfYLHW62H8RB_qfWjRrC1UOI7t7b_yl025D7NifVcDatT4AkhrqhoCqreoC2o5qwYckTXanDWgPfIqITgP6LE"
-                    />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end">
-                        <span class="text-sm font-bold text-primary mb-2">Infraestructura</span>
-                        <h3 class="text-2xl font-bold text-white">Proyecto Vial Este</h3>
-                        <p class="mt-2 text-sm text-neutral-300 opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">Ingeniería vial y supervisión de obra civil.</p>
-                    </div>
-                </div>
+                @endforelse
+            </div>
 
             </div>
         </div>
