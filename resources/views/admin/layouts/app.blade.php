@@ -39,10 +39,12 @@
                 Dashboard
             </a>
             
+            @if(auth()->check() && auth()->user()->isAdmin())
             <a href="{{ route('admin.users.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors {{ request()->routeIs('admin.users.*') ? 'bg-primary text-secondary font-bold' : 'text-neutral-300 hover:bg-neutral-800 hover:text-white font-medium' }}">
                 <span class="material-symbols-outlined">group</span>
                 Usuarios
             </a>
+            @endif
             
             <a href="{{ route('admin.proyectos.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors {{ request()->routeIs('admin.proyectos.*') ? 'bg-primary text-secondary font-bold' : 'text-neutral-300 hover:bg-neutral-800 hover:text-white font-medium' }}">
                 <span class="material-symbols-outlined">work</span>
