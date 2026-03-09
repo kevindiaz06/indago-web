@@ -21,7 +21,10 @@ use App\Http\Middleware\IsAdmin;
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('users', UserController::class)->middleware(IsAdmin::class)->only(['index', 'store', 'update', 'destroy']);
-    Route::resource('proyectos', App\Http\Controllers\Admin\ProyectoController::class)->except(['show']);
+    Route::get('proyectos', [App\Http\Controllers\Admin\ProyectoController::class, 'index'])->name('proyectos.index');
+    Route::resource('proyectos', App\Http\Controllers\Admin\ProyectoController::class)
+        ->except(['index', 'show'])
+        ->middleware(IsAdmin::class);
 });
 
 Route::middleware('auth')->group(function () {

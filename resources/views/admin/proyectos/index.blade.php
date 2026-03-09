@@ -8,10 +8,12 @@
         <h1 class="text-2xl font-bold text-neutral-800">Listado de Proyectos</h1>
         <p class="text-sm text-neutral-500 mt-1">Administra los proyectos del portafolio.</p>
     </div>
+    @if(auth()->check() && auth()->user()->isAdmin())
     <a href="{{ route('admin.proyectos.create') }}" class="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-bold text-white hover:bg-orange-500 transition-colors shadow-lg shadow-primary/30">
         <span class="material-symbols-outlined text-[20px]">add</span>
         Nuevo Proyecto
     </a>
+    @endif
 </div>
 
 @if(session('success'))
@@ -32,7 +34,9 @@
                     <th class="px-6 py-4 font-semibold">Tipo</th>
                     <th class="px-6 py-4 font-semibold">Estado</th>
                     <th class="px-6 py-4 font-semibold">Cliente</th>
+                    @if(auth()->check() && auth()->user()->isAdmin())
                     <th class="px-6 py-4 font-semibold text-right">Acciones</th>
+                    @endif
                 </tr>
             </thead>
             <tbody class="divide-y divide-neutral-200">
@@ -73,6 +77,7 @@
                         @endif
                     </td>
                     <td class="px-6 py-4">{{ $p->cliente }}</td>
+                    @if(auth()->check() && auth()->user()->isAdmin())
                     <td class="px-6 py-4 text-right">
                         <div class="flex items-center justify-end gap-2">
                             <a href="{{ route('admin.proyectos.edit', $p) }}" class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-100 text-neutral-600 hover:bg-primary hover:text-white transition-colors" title="Editar">
@@ -87,10 +92,11 @@
                             </form>
                         </div>
                     </td>
+                    @endif
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" class="px-6 py-8 text-center text-neutral-500">
+                    <td colspan="{{ auth()->check() && auth()->user()->isAdmin() ? '5' : '4' }}" class="px-6 py-8 text-center text-neutral-500">
                         <div class="flex flex-col items-center justify-center">
                             <span class="material-symbols-outlined text-4xl mb-2 text-neutral-300">folder_off</span>
                             <p>No hay proyectos registrados.</p>
