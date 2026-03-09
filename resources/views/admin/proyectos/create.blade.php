@@ -101,6 +101,9 @@
             <div class="text-sm leading-6">
                 <label for="destacado" class="font-medium text-neutral-900">Destacar en la página de inicio</label>
                 <p class="text-neutral-500">Muestra este proyecto en la sección "Proyectos Destacados" de la página principal. Se recomienda destacar un máximo de 3 proyectos.</p>
+                @error('destacado')
+                    <span class="text-sm font-bold text-red-600 mt-2 block">{{ $message }}</span>
+                @enderror
             </div>
         </div>
 
@@ -131,4 +134,19 @@
         </div>
     </form>
 </div>
+@if($errors->has('destacado'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                title: 'Límite Alcanzado',
+                text: '{{ $errors->first('destacado') }}',
+                icon: 'warning',
+                confirmButtonColor: '#fca311',
+                confirmButtonText: 'Entendido'
+            });
+        });
+    </script>
+@endif
+
 @endsection
