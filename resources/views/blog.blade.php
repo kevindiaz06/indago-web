@@ -64,7 +64,7 @@
 
                     {{-- Artículo destacado (primero) --}}
                     @php $destacado = $posts->first(); @endphp
-                    <div class="group grid overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-neutral-100 transition-all hover:shadow-xl hover:-translate-y-1 lg:grid-cols-5">
+                    <div class="post-card cursor-pointer group grid overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-neutral-100 transition-all hover:shadow-xl hover:-translate-y-1 lg:grid-cols-5" data-id="{{ $destacado->id }}">
                         <div class="relative lg:col-span-3 h-64 lg:h-auto overflow-hidden">
                             @if($destacado->img)
                                 <img alt="{{ $destacado->titulo }}" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="{{ asset('storage/' . $destacado->img) }}">
@@ -95,7 +95,7 @@
                     @if($posts->count() > 1)
                     <div class="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
                         @foreach($posts->slice(1) as $art)
-                        <article class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-neutral-100 transition-all hover:shadow-xl hover:-translate-y-1">
+                        <article class="post-card cursor-pointer group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-neutral-100 transition-all hover:shadow-xl hover:-translate-y-1" data-id="{{ $art->id }}">
                             <div class="relative h-48 overflow-hidden">
                                 @if($art->img)
                                     <img alt="{{ $art->titulo }}" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="{{ asset('storage/' . $art->img) }}">
@@ -189,5 +189,67 @@
             </div>
         </div>
     </section>
+
+    {{-- =============================================
+         MODAL: LECTURA DE NOTICIA
+         ============================================= --}}
+    <div id="modal-overlay" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+        <div id="modal-box" class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-2xl">
+
+            {{-- Cerrar --}}
+            <button id="modal-close" class="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 hover:bg-neutral-200 transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+
+            @if(isset($posts) && $posts->count() > 0)
+            @foreach($posts as $p)
+            <div id="modal-{{ $p->id }}" class="modal-content hidden">
+
+                {{-- Imagen Principal --}}
+                <div class="relative h-72 sm:h-96 w-full overflow-hidden rounded-t-2xl bg-neutral-100">
+                    @if($p->img)
+                        <img alt="{{ $p->titulo }}" class="h-full w-full object-cover" src="{{ asset('storage/' . $p->img) }}">
+                    @else
+                        <div class="h-full w-full flex items-center justify-center bg-neutral-200"><span class="material-symbols-outlined text-5xl text-neutral-400">image</span></div>
+                    @endif
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <span class="mb-3 inline-block rounded-full bg-primary px-3 py-1 text-xs font-bold text-white">{{ $p->categoria }}</span>
+                        <h2 class="text-3xl font-black text-white leading-tight drop-shadow-md">{{ $p->titulo }}</h2>
+                        <div class="mt-4 flex items-center gap-3 text-sm text-neutral-200">
+                            <div class="flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                                {{ $p->created_at->format('d M Y') }}
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-[16px]">person</span>
+                                Indago Constructora
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8">
+                    {{-- Contenido --}}
+                    <div class="prose prose-neutral max-w-none prose-p:leading-relaxed prose-headings:text-secondary">
+                        {!! nl2br(e($p->contenido)) !!}
+                    </div>
+
+                    {{-- CTA --}}
+                    <div class="mt-10 border-t border-neutral-100 pt-6 flex flex-col sm:flex-row gap-3">
+                        <a href="{{ route('inicio') }}#contacto" class="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-bold text-white hover:bg-orange-500 transition-colors shadow-lg shadow-primary/30">
+                            ¿Tienes un proyecto en mente? <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                        </a>
+                        <button onclick="document.getElementById('modal-overlay').classList.add('hidden'); document.getElementById('modal-overlay').classList.remove('flex'); document.body.style.overflow = '';" class="flex-1 inline-flex items-center justify-center gap-2 rounded-lg border-2 border-neutral-200 px-6 py-3 text-sm font-bold text-secondary hover:bg-neutral-50 transition-colors">
+                            Cerrar Noticia
+                        </button>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            @endif
+
+        </div>
+    </div>
 
 </x-layouts.public>

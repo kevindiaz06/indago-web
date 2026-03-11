@@ -297,23 +297,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ── Modal de Proyectos ──────────────────────────────────────
+    // ── Modal General (Proyectos y Posts) ──────────────────────────────────────
     const modalOverlay = document.getElementById('modal-overlay');
     const modalCloseBtn = document.getElementById('modal-close');
+    const triggerCards = document.querySelectorAll('.proyecto-card, .post-card');
 
-    if (modalOverlay && proyectoCards.length) {
-        proyectoCards.forEach(card => {
-            card.addEventListener('click', () => {
+    if (modalOverlay && triggerCards.length) {
+        triggerCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('a')) return;
                 const id = card.dataset.id;
+                if (!id) return;
                 // ocultar todos los contenidos del modal
                 document.querySelectorAll('.modal-content').forEach(mc => mc.classList.add('hidden'));
                 // mostrar el correcto
                 const target = document.getElementById('modal-' + id);
-                if (target) target.classList.remove('hidden');
-                // mostrar overlay
-                modalOverlay.classList.remove('hidden');
-                modalOverlay.classList.add('flex');
-                document.body.style.overflow = 'hidden';
+                if (target) {
+                    target.classList.remove('hidden');
+                    // mostrar overlay
+                    modalOverlay.classList.remove('hidden');
+                    modalOverlay.classList.add('flex');
+                    document.body.style.overflow = 'hidden';
+                }
             });
         });
 
