@@ -26,8 +26,8 @@
         <!-- Logo -->
         <div class="h-20 flex items-center justify-center border-b border-neutral-700 px-6">
             <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3">
-                <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-800 text-primary">
-                    <span class="material-symbols-outlined text-3xl">apartment</span>
+                <div class="flex h-10 w-10 items-center justify-center ">
+                    <img src="{{ asset('img/faviconindago2.png') }}" alt="Indago" class="h-full w-auto object-contain">
                 </div>
                 <span class="text-xl font-black tracking-tight text-white">
                     INDAGO<span class="text-primary">ADMIN</span>

@@ -12,8 +12,8 @@
             
             <div class="relative z-20 text-white max-w-lg transition-all duration-700 ease-out transform group-hover:scale-105">
                 <div class="flex items-center gap-4 mb-10 transform -translate-y-4 opacity-0 animate-[fade-in-down_0.8s_forwards]">
-                    <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-secondary shadow-lg shadow-primary/20">
-                        <span class="material-symbols-outlined text-4xl">apartment</span>
+                    <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary p-2 shadow-lg shadow-primary/20">
+                        <img src="{{ asset('img/indagoblanco1.png') }}" alt="Indago" class="h-full w-auto object-contain">
                     </div>
                     <span class="text-4xl font-black tracking-tight">
                         INDAGO<span class="text-primary">ADMIN</span>
@@ -49,8 +49,8 @@
                 
                 <!-- Logo para móvil -->
                 <div class="lg:hidden flex items-center gap-3 mb-10 justify-center">
-                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-primary shadow-md">
-                        <span class="material-symbols-outlined text-3xl">apartment</span>
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary p-1.5 shadow-md">
+                        <img src="{{ asset('img/indagoblanco1.png') }}" alt="Indago" class="h-full w-auto object-contain">
                     </div>
                     <span class="text-3xl font-black tracking-tight text-secondary">
                         INDAGO<span class="text-primary">ADMIN</span>

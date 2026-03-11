@@ -14,8 +14,8 @@
             {{-- Columna 1: Logo y Descripción --}}
             <div class="lg:col-span-1">
                 <a class="flex items-center gap-3 mb-6 group inline-flex" href="{{ route('inicio') }}">
-                    <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary text-secondary transition-transform group-hover:scale-105">
-                        <span class="material-symbols-outlined text-3xl">apartment</span>
+                    <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary p-1.5 transition-transform group-hover:scale-105">
+                        <img src="{{ asset('img/indagoblanco1.png') }}" alt="Indago" class="h-full w-auto object-contain">
                     </div>
                     <span class="text-xl font-black tracking-tight text-white flex-shrink-0">
                         INDAGO<span class="text-primary">CONSTRUCTORA</span>

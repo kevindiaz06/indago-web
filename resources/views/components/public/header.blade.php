@@ -8,8 +8,8 @@
 
             {{-- Logo --}}
             <a class="flex items-center gap-3" href="{{ route('inicio') }}">
-                <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-primary">
-                    <span class="material-symbols-outlined text-3xl">apartment</span>
+                <div class="flex h-10 w-10 items-center justify-center">
+                    <img src="{{ asset('img/indagoblanco1.png') }}" alt="Indago" class="h-full w-auto object-contain">
                 </div>
                 <span class="text-xl font-black tracking-tight text-secondary">
                     INDAGO<span class="text-primary">CONSTRUCTORA</span>
