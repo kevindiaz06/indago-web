@@ -2,14 +2,45 @@
      Componente: Footer público – Indago Constructora
      Uso: <x-public.footer />
      ============================================================ --}}
-<footer class="bg-secondary text-white pt-16 pb-6 border-t border-neutral-800 relative overflow-hidden">
+<footer class="bg-secondary text-white pt-12 pb-6 border-t border-neutral-800 relative overflow-hidden">
     {{-- Decorative Background Elements --}}
     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/0 via-primary to-primary/0 opacity-50"></div>
     <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+
+        {{-- Newsletter Horizontal Banner --}}
+        <div class="mb-12 rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8 backdrop-blur-md">
+            <div class="flex flex-col my-auto md:flex-row items-center justify-between gap-6 md:gap-8">
+                <div class="md:w-5/12 w-full">
+                    <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-xl">forward_to_inbox</span> Newsletter
+                    </h3>
+                    <p class="text-neutral-400 text-sm">
+                        Suscríbete y recibe las últimas novedades de nuestros proyectos y blogs.
+                    </p>
+                </div>
+                <div class="md:w-7/12 w-full">
+                    <form action="#" method="POST" class="flex flex-col sm:flex-row gap-3 w-full">
+                        @csrf
+                        <div class="relative flex-grow group">
+                            <input type="email" name="email" placeholder="Tu correo electrónico" class="w-full rounded-xl border border-white/10 bg-white/5 py-3 pl-4 pr-10 text-sm text-white placeholder-neutral-500 transition-all duration-300 focus:border-primary/50 focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary/20" required>
+                            <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 text-[18px] group-focus-within:text-primary transition-colors">mail</span>
+                        </div>
+                        <button type="submit" class="group relative sm:w-auto w-full shrink-0 overflow-hidden rounded-xl bg-gradient-to-r from-primary to-orange-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/40 hover:scale-[1.02]">
+                            <span class="relative z-10 flex items-center justify-center gap-2">
+                                Suscribirme
+                                <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+                            </span>
+                            <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-primary opacity-0 transition-opacity group-hover:opacity-100"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
             
             {{-- Columna 1: Logo y Descripción --}}
             <div class="lg:col-span-1">
