@@ -53,6 +53,11 @@
                 <span class="material-symbols-outlined">work</span>
                 Proyectos
             </a>
+
+            <a href="{{ route('admin.posts.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors {{ request()->routeIs('admin.posts.*') ? 'bg-primary text-secondary font-bold' : 'text-neutral-300 hover:bg-neutral-800 hover:text-white font-medium' }}">
+                <span class="material-symbols-outlined">article</span>
+                Blog
+            </a>
         </nav>
 
         <!-- User Info / Logout -->

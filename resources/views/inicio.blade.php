@@ -236,45 +236,35 @@
             </div>
 
             <div class="grid gap-8 lg:grid-cols-2">
-
-                {{-- Blog Card 1 --}}
+                @forelse($postsDestacados as $post)
                 <article class="flex flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-neutral-100 transition-all hover:shadow-lg sm:flex-row">
-                    <div class="h-48 w-full shrink-0 overflow-hidden sm:h-auto sm:w-56">
+                    <div class="h-48 w-full shrink-0 overflow-hidden sm:h-auto sm:w-56 bg-neutral-100">
+                        @if($post->img)
                         <img
-                            alt="Arquitecto revisando planos de proyecto"
+                            alt="{{ $post->titulo }}"
                             class="h-full w-full object-cover transition-transform hover:scale-105"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdlQJnNzaaXsRUTVKSvFPss7OVxlLfaCNgAI2bt3tDydVlHofZomK-J_OOc58qoRH7sMKA4ecP6DEWU2Q3WXVjCXLy719CsSsM1s4OWYHcuv0dkN6w-ry3UoB57g-kjDH_Z5oXDcyDyTn-SaTSgakPUzo05UyHaC1QisnfDx_HNdld6QvhY4QoLgD06oPFMZYLWmuQjLktAiShHMjplxO9ml8mxWKcfRJvu38yK3mfOa_p2VtAgaUlSbHhL5KeC-bc6f5Jhcs7GMA"
+                            src="{{ asset('storage/' . $post->img) }}"
                         />
+                        @else
+                        <div class="h-full w-full flex items-center justify-center bg-neutral-200">
+                            <span class="material-symbols-outlined text-4xl text-neutral-400">image</span>
+                        </div>
+                        @endif
                     </div>
                     <div class="flex flex-col justify-center p-6">
-                        <span class="mb-2 text-xs font-bold uppercase tracking-wider text-primary">Arquitectura</span>
-                        <h3 class="mb-2 text-xl font-bold text-secondary hover:text-primary cursor-pointer">Tendencias en construcción sostenible para RD en 2024</h3>
-                        <p class="mb-4 text-sm text-neutral-600 line-clamp-2">Cómo los materiales ecoeficientes y las técnicas modernas están transformando el sector de la construcción en República Dominicana.</p>
+                        <span class="mb-2 text-xs font-bold uppercase tracking-wider text-primary">{{ $post->categoria }}</span>
+                        <h3 class="mb-2 text-xl font-bold text-secondary hover:text-primary cursor-pointer">{{ $post->titulo }}</h3>
+                        <p class="mb-4 text-sm text-neutral-600 line-clamp-2">{{ $post->resumen }}</p>
                         <a class="inline-flex items-center text-sm font-bold text-secondary hover:text-primary" href="{{ route('blog') }}">
                             Leer más <span class="material-symbols-outlined text-base ml-1">arrow_forward</span>
                         </a>
                     </div>
                 </article>
-
-                {{-- Blog Card 2 --}}
-                <article class="flex flex-col overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-neutral-100 transition-all hover:shadow-lg sm:flex-row">
-                    <div class="h-48 w-full shrink-0 overflow-hidden sm:h-auto sm:w-56">
-                        <img
-                            alt="Obra de construcción en proceso"
-                            class="h-full w-full object-cover transition-transform hover:scale-105"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx1UmMJG8uucbHKXwEXYfja1UEL6hd9hX9qLjL9kOVBA7WUipbkXk_TnytGK0Spz8_ybcKDKPCcEsf3kbEmdYZFrr3c35pSu7ClDoHg2iOcf3FoMPc8A4AQp_TXX85AmVhW-7_MfGVTR0pp9Gka5ij9WJjjbD8MU8dHpdagShkuT3SPqu5vl97LDfN8S7tK5RFu8TA1pJZI4NaMNBZguPFP9Cb1qscTut92WeJZvKtf331eqIdtizZguAB218gIl2_Lr-uFhrG16o"
-                        />
-                    </div>
-                    <div class="flex flex-col justify-center p-6">
-                        <span class="mb-2 text-xs font-bold uppercase tracking-wider text-primary">Ingeniería</span>
-                        <h3 class="mb-2 text-xl font-bold text-secondary hover:text-primary cursor-pointer">Normativa de construcción en República Dominicana: Guía 2024</h3>
-                        <p class="mb-4 text-sm text-neutral-600 line-clamp-2">Todo lo que debes saber sobre los reglamentos, permisos y normas técnicas vigentes para construir en Santo Domingo y el resto del país.</p>
-                        <a class="inline-flex items-center text-sm font-bold text-secondary hover:text-primary" href="{{ route('blog') }}">
-                            Leer más <span class="material-symbols-outlined text-base ml-1">arrow_forward</span>
-                        </a>
-                    </div>
-                </article>
-
+                @empty
+                <div class="col-span-full py-12 text-center">
+                    <p class="text-neutral-500">Próximamente estaremos publicando nuevas noticias y tendencias del sector.</p>
+                </div>
+                @endforelse
             </div>
         </div>
     </section>

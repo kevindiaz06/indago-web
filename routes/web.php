@@ -8,7 +8,7 @@ Route::get('/', [App\Http\Controllers\Public\HomeController::class, 'index'])->n
 Route::view('/nosotros', 'nosotros')->name('nosotros');
 Route::view('/servicios', 'servicios')->name('servicios');
 Route::get('/proyectos', [App\Http\Controllers\Public\ProyectoController::class, 'index'])->name('proyectos');
-Route::view('/blog', 'blog')->name('blog');
+Route::get('/blog', [App\Http\Controllers\Public\PostController::class, 'index'])->name('blog');
 Route::view('/privacidad', 'privacidad')->name('privacidad');
 Route::view('/terminos', 'terminos')->name('terminos');
 
@@ -23,6 +23,11 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::resource('users', UserController::class)->middleware(IsAdmin::class)->only(['index', 'store', 'update', 'destroy']);
     Route::get('proyectos', [App\Http\Controllers\Admin\ProyectoController::class, 'index'])->name('proyectos.index');
     Route::resource('proyectos', App\Http\Controllers\Admin\ProyectoController::class)
+        ->except(['index', 'show'])
+        ->middleware(IsAdmin::class);
+        
+    Route::get('posts', [App\Http\Controllers\Admin\PostController::class, 'index'])->name('posts.index');
+    Route::resource('posts', App\Http\Controllers\Admin\PostController::class)
         ->except(['index', 'show'])
         ->middleware(IsAdmin::class);
 });
