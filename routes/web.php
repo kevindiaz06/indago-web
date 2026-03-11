@@ -13,6 +13,10 @@ Route::view('/privacidad', 'privacidad')->name('privacidad');
 Route::view('/terminos', 'terminos')->name('terminos');
 
 Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto.enviar');
+Route::post('/newsletter/subscribe', [App\Http\Controllers\Public\NewsletterController::class, 'subscribe'])
+    ->name('newsletter.subscribe')
+    ->middleware('throttle:5,1');
+
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;

@@ -2,6 +2,20 @@
      Componente: Footer público – Indago Constructora
      Uso: <x-public.footer />
      ============================================================ --}}
+
+{{-- Toast Newsletter (fuera del footer para evitar overflow-hidden) --}}
+<div id="newsletter-toast"
+     class="fixed top-20 right-6 z-[9999] max-w-sm w-full pointer-events-none opacity-0 translate-y-4 transition-all duration-500 ease-out">
+    <div id="newsletter-toast-inner"
+         class="flex items-start gap-4 rounded-2xl border p-4 shadow-2xl backdrop-blur-md">
+        <span id="newsletter-toast-icon" class="material-symbols-outlined text-2xl flex-shrink-0 mt-0.5"></span>
+        <div>
+            <p id="newsletter-toast-title" class="text-sm font-bold mb-0.5"></p>
+            <p id="newsletter-toast-msg"   class="text-xs opacity-80"></p>
+        </div>
+    </div>
+</div>
+
 <footer class="bg-secondary text-white pt-12 pb-6 border-t border-neutral-800 relative overflow-hidden">
     {{-- Decorative Background Elements --}}
     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/0 via-primary to-primary/0 opacity-50"></div>
@@ -22,14 +36,18 @@
                     </p>
                 </div>
                 <div class="md:w-7/12 w-full">
-                    <form action="#" method="POST" class="flex flex-col sm:flex-row gap-3 w-full">
+                    <form id="newsletter-form" action="{{ route('newsletter.subscribe') }}" method="POST" novalidate class="flex flex-col sm:flex-row gap-3 w-full">
                         @csrf
                         <div class="relative flex-grow group">
-                            <input type="email" name="email" placeholder="Tu correo electrónico" class="w-full rounded-xl border border-white/10 bg-white/5 py-3 pl-4 pr-10 text-sm text-white placeholder-neutral-500 transition-all duration-300 focus:border-primary/50 focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary/20" required>
+                            <input id="newsletter-email" type="email" name="email"
+                                   placeholder="Tu correo electrónico"
+                                   class="w-full rounded-xl border border-white/10 bg-white/5 py-3 pl-4 pr-10 text-sm text-white placeholder-neutral-500 transition-all duration-300 focus:border-primary/50 focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary/20"
+                                   required autocomplete="email">
                             <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 text-[18px] group-focus-within:text-primary transition-colors">mail</span>
                         </div>
-                        <button type="submit" class="group relative sm:w-auto w-full shrink-0 overflow-hidden rounded-xl bg-gradient-to-r from-primary to-orange-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/40 hover:scale-[1.02]">
-                            <span class="relative z-10 flex items-center justify-center gap-2">
+                        <button id="newsletter-btn" type="submit"
+                                class="group relative sm:w-auto w-full shrink-0 overflow-hidden rounded-xl bg-gradient-to-r from-primary to-orange-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/40 hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100">
+                            <span id="newsletter-btn-text" class="relative z-10 flex items-center justify-center gap-2">
                                 Suscribirme
                                 <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
                             </span>
@@ -39,6 +57,96 @@
                 </div>
             </div>
         </div>
+
+        <script>
+        (function () {
+            const form     = document.getElementById('newsletter-form');
+            const emailIn  = document.getElementById('newsletter-email');
+            const btn      = document.getElementById('newsletter-btn');
+            const btnText  = document.getElementById('newsletter-btn-text');
+
+            // ── Toast helpers ──────────────────────────────────────────────
+            const toast      = document.getElementById('newsletter-toast');
+            const toastInner = document.getElementById('newsletter-toast-inner');
+            const toastIcon  = document.getElementById('newsletter-toast-icon');
+            const toastTitle = document.getElementById('newsletter-toast-title');
+            const toastMsg   = document.getElementById('newsletter-toast-msg');
+            let toastTimer;
+
+            function showToast(type, title, message) {
+                clearTimeout(toastTimer);
+
+                const isSuccess = type === 'success';
+                toastInner.className = isSuccess
+                    ? 'flex items-start gap-4 rounded-2xl border p-4 shadow-2xl backdrop-blur-md bg-green-950/80 border-green-500/40 text-green-100'
+                    : 'flex items-start gap-4 rounded-2xl border p-4 shadow-2xl backdrop-blur-md bg-red-950/80 border-red-500/40 text-red-100';
+
+                toastIcon.textContent  = isSuccess ? 'check_circle' : 'error';
+                toastIcon.className    = 'material-symbols-outlined text-2xl flex-shrink-0 mt-0.5 ' + (isSuccess ? 'text-green-400' : 'text-red-400');
+                toastTitle.textContent = title;
+                toastMsg.textContent   = message;
+
+                toast.classList.remove('opacity-0', 'translate-y-4');
+                toast.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+
+                toastTimer = setTimeout(() => {
+                    toast.classList.add('opacity-0', 'translate-y-4');
+                    toast.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                }, 5000);
+            }
+
+            // ── Estado del botón ───────────────────────────────────────────
+            function setLoading(loading) {
+                btn.disabled = loading;
+                btnText.innerHTML = loading
+                    ? '<svg class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg> Enviando...'
+                    : '<span class="material-symbols-outlined text-[18px]">arrow_forward</span> Suscribirme';
+            }
+
+            // ── Submit ─────────────────────────────────────────────────────
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const email = emailIn.value.trim();
+                if (!email) return;
+
+                setLoading(true);
+
+                try {
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content
+                                   || form.querySelector('input[name="_token"]')?.value
+                                   || '';
+
+                    const res  = await fetch('{{ route("newsletter.subscribe") }}', {
+                        method:  'POST',
+                        headers: {
+                            'Content-Type':  'application/json',
+                            'Accept':        'application/json',
+                            'X-CSRF-TOKEN':  csrfToken,
+                        },
+                        body: JSON.stringify({ email }),
+                    });
+
+                    const data = await res.json();
+
+                    if (data.success) {
+                        showToast('success', '¡Suscripción exitosa!', data.message);
+                        emailIn.value = '';
+                        // Desactivar permanentemente el formulario en esta sesión
+                        btn.disabled  = true;
+                        emailIn.disabled = true;
+                        btnText.innerHTML = '<span class="material-symbols-outlined text-[18px]">check_circle</span> ¡Suscrito!';
+                    } else {
+                        showToast('error', 'No se pudo suscribir', data.message);
+                        setLoading(false);
+                    }
+                } catch (err) {
+                    showToast('error', 'Error de conexión', 'Por favor inténtalo de nuevo.');
+                    setLoading(false);
+                }
+            });
+        })();
+        </script>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
             
