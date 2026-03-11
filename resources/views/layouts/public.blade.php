@@ -7,6 +7,9 @@
 
     <title>{{ $title ?? config('app.name', 'Ferretería Moderna Industrial') }}</title>
 
+    {{-- Favicon --}}
+    <link rel="icon" href="{{ asset('img/faviconindago2.png') }}" type="image/png">
+
     {{-- Google Fonts: Inter --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
