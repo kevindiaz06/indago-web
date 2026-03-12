@@ -20,6 +20,7 @@ Route::post('/newsletter/subscribe', [App\Http\Controllers\Public\NewsletterCont
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Middleware\IsAdmin;
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
@@ -34,6 +35,14 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::resource('posts', App\Http\Controllers\Admin\PostController::class)
         ->except(['index', 'show'])
         ->middleware(IsAdmin::class);
+
+    // Newsletter Subscribers (admin only)
+    Route::middleware(IsAdmin::class)->group(function () {
+        Route::get('subscribers', [SubscriberController::class, 'index'])->name('subscribers.index');
+        Route::get('subscribers/export', [SubscriberController::class, 'export'])->name('subscribers.export');
+        Route::patch('subscribers/{subscriber}/toggle', [SubscriberController::class, 'toggle'])->name('subscribers.toggle');
+        Route::delete('subscribers/{subscriber}', [SubscriberController::class, 'destroy'])->name('subscribers.destroy');
+    });
 });
 
 Route::middleware('auth')->group(function () {
