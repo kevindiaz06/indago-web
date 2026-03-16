@@ -22,3 +22,11 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+docker-compose.override.yml
+auth.json
+npm-debug.log
+yarn-error.log
+*.sublime-project
+*.sublime-workspace
+/.laravel-cloud
+.qodo
