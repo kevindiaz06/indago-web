@@ -38,10 +38,20 @@
                             <p style="color: #4b5563; font-size: 15px; line-height: 1.6; margin-bottom: 10px; font-weight: bold;">
                                 Resumen de tu solicitud:
                             </p>
+                            @php
+                                $tipoLabels = [
+                                    'civil'         => 'Ingeniería Civil',
+                                    'vial'          => 'Ingeniería Vial',
+                                    'hidraulica'    => 'Ingeniería Hidráulica',
+                                    'arquitectonico'=> 'Diseño Arquitectónico',
+                                    'presupuesto'   => 'Presupuesto',
+                                    'asesoria'      => 'Asesoría',
+                                ];
+                            @endphp
                             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 30px; font-size: 15px; color: #4b5563;">
                                 <tr>
                                     <td width="20" valign="top" style="color: #fca311; font-weight: bold; padding-bottom: 10px;">•</td>
-                                    <td valign="top" style="padding-bottom: 10px;"><strong>Categoría:</strong> {{ $datos['tipo_obra'] === 'civil' ? 'Ingeniería Civil' : 'Diseño Arquitectónico' }}</td>
+                                    <td valign="top" style="padding-bottom: 10px;"><strong>Categoría:</strong> {{ $tipoLabels[$datos['tipo_obra']] ?? $datos['tipo_obra'] }}</td>
                                 </tr>
                                 @if(!empty($datos['empresa']))
                                 <tr>

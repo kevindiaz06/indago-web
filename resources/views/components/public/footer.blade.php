@@ -113,16 +113,18 @@
                 setLoading(true);
 
                 try {
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content
-                                   || form.querySelector('input[name="_token"]')?.value
+                    // Use the hidden _token input inside the form – always matches the current session
+                    const csrfToken = form.querySelector('input[name="_token"]')?.value
+                                   || document.querySelector('meta[name="csrf-token"]')?.content
                                    || '';
 
-                    const res  = await fetch('{{ route("newsletter.subscribe") }}', {
+                    const res  = await fetch('/newsletter/subscribe', {
                         method:  'POST',
                         headers: {
                             'Content-Type':  'application/json',
                             'Accept':        'application/json',
                             'X-CSRF-TOKEN':  csrfToken,
+                            'X-Requested-With': 'XMLHttpRequest',
                         },
                         body: JSON.stringify({ email }),
                     });

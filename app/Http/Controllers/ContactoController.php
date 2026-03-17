@@ -16,7 +16,7 @@ class ContactoController extends Controller
             'nombre'    => 'required|string|max:255',
             'email'     => 'required|email|max:255',
             'telefono'  => 'required|string|max:50',
-            'tipo_obra' => 'required|in:civil,arquitectonico',
+            'tipo_obra' => 'required|in:civil,vial,hidraulica,arquitectonico,presupuesto,asesoria',
             'empresa'   => 'nullable|string|max:255',
             'mensaje'   => 'required|string|max:2000',
         ]);

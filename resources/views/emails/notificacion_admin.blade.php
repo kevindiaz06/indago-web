@@ -51,7 +51,17 @@
                                 <tr>
                                     <td style="padding-top: 12px; border-top: 1px solid #f3f4f6;">
                                         <span style="font-size: 12px; text-transform: uppercase; color: #9ca3af; font-weight: bold; letter-spacing: 1px;">Tipo de Obra</span><br>
-                                        <strong style="color: #242424; font-size: 16px; display: inline-block; padding: 4px 10px; background-color: #242424; color: #ffffff; border-radius: 4px; margin-top: 4px;">{{ $datos['tipo_obra'] === 'civil' ? 'Ingeniería Civil' : 'Diseño Arquitectónico' }}</strong>
+                                        @php
+                                            $tipoLabels = [
+                                                'civil'         => 'Ingeniería Civil',
+                                                'vial'          => 'Ingeniería Vial',
+                                                'hidraulica'    => 'Ingeniería Hidráulica',
+                                                'arquitectonico'=> 'Diseño Arquitectónico',
+                                                'presupuesto'   => 'Presupuesto',
+                                                'asesoria'      => 'Asesoría',
+                                            ];
+                                        @endphp
+                                        <strong style="color: #242424; font-size: 16px; display: inline-block; padding: 4px 10px; background-color: #242424; color: #ffffff; border-radius: 4px; margin-top: 4px;">{{ $tipoLabels[$datos['tipo_obra']] ?? $datos['tipo_obra'] }}</strong>
                                     </td>
                                 </tr>
                             </table>
