@@ -467,8 +467,8 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-white">Sede Principal</h4>
-                                <p class="mt-0.5 text-sm text-neutral-400">Edif. B10, Local 1D</p>
-                                <p class="text-sm text-neutral-400">Av. Pedro Livio Cedeño, Ensanche La Fé</p>
+                                <p class="mt-0.5 text-sm text-neutral-400">Av. Pedro Livio Cedeño</p>
+                                <p class="text-sm text-neutral-400">Edif. B10, Local 1D, Ensanche La Fé</p>
                                 <p class="mt-2 text-sm font-semibold text-neutral-300">Santo Domingo, DN – RD</p>
                             </div>
                         </div>

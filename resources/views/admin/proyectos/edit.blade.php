@@ -74,11 +74,11 @@
                 @error('m2') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
             </div>
 
-            {{-- Pisos --}}
+            {{-- Niveles --}}
             <div>
-                <label for="pisos" class="block text-sm font-medium text-neutral-700 mb-1">Estructura / Pisos *</label>
-                <input type="text" name="pisos" id="pisos" class="w-full rounded-lg border-neutral-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/20" value="{{ old('pisos', $proyecto->pisos) }}" required>
-                @error('pisos') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
+                <label for="niveles" class="block text-sm font-medium text-neutral-700 mb-1">Estructura / Niveles *</label>
+                <input type="text" name="niveles" id="niveles" class="w-full rounded-lg border-neutral-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/20" value="{{ old('niveles', $proyecto->niveles) }}" required>
+                @error('niveles') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
             </div>
 
             {{-- Tiempo --}}

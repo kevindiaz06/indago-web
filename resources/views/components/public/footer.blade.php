@@ -211,13 +211,13 @@
                         <div class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded bg-white/5 text-primary">
                             <span class="material-symbols-outlined text-[20px]">location_on</span>
                         </div>
-                        <span class="mt-1">Av. Principal 123, Ciudad<br>Estado, C.P. 12345</span>
+                        <span class="mt-1">Avenida Pedro Livio Cedeño, Edif. B10, Local 1D, Ensanche La Fe, Santo Domingo.</span>
                     </li>
                     <li class="flex items-center gap-3">
                         <div class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded bg-white/5 text-primary">
                             <span class="material-symbols-outlined text-[20px]">phone</span>
                         </div>
-                        <a href="tel:+521234567890" class="hover:text-primary transition-colors">+52 123 456 7890</a>
+                        <a href="tel:+521234567890" class="hover:text-primary transition-colors">+1 (809) 896-8627</a>
                     </li>
                     <li class="flex items-center gap-3">
                         <div class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded bg-white/5 text-primary">
