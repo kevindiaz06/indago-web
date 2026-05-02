@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  # Servicio de aplicación PHP
+  # Servicio de aplicación PHP (Apache incluido)
   app:
     build:
       context: .
@@ -9,37 +9,27 @@ services:
       args:
         user: laravel
         uid: 1000
-    container_name: indarca-app
-    restart: unless-stopped
-    working_dir: /var/www
-    volumes:
-      - ./:/var/www
-    networks:
-      - indarca-network
-
-  # Servicio de Nginx
-  nginx:
-    image: nginx:alpine
-    container_name: indarca-nginx
+    container_name: indago-app
     restart: unless-stopped
     ports:
       - "8000:80"
     volumes:
-      - ./:/var/www
-      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+      - ./:/var/www/html
+      - /var/www/html/vendor
+      - /var/www/html/node_modules
     networks:
-      - indarca-network
+      - indago-network
 
   # Servicio de MySQL
   db:
     image: mysql:8.0
-    container_name: indarca-db
+    container_name: indago-db
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE:-indarca}
+      MYSQL_DATABASE: ${DB_DATABASE:-indago}
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-password}
       MYSQL_PASSWORD: ${DB_PASSWORD:-password}
-      MYSQL_USER: ${DB_USERNAME:-indarca}
+      MYSQL_USER: ${DB_USERNAME:-indago}
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
@@ -47,10 +37,10 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - indarca-network
+      - indago-network
 
 networks:
-  indarca-network:
+  indago-network:
     driver: bridge
 
 volumes:
