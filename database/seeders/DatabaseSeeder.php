@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Admin',
                 'email' => 'kevindiazmota@gmail.com',
                 'password' => '123456789',
+                'role' => 'admin',
             ]);
         }
     }
