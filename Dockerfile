@@ -5,6 +5,7 @@ FROM mirror.gcr.io/library/php:8.2-apache
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Instalar dependencias del sistema
+# Instalar dependencias del sistema
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -17,6 +18,8 @@ RUN apt-get update && apt-get install -y \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
     mariadb-client \
+    libonig-dev \
+    libwebp-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
