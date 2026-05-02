@@ -1,5 +1,5 @@
 # Imagen base de PHP 8.2 con Apache
-FROM php:8.2-apache
+FROM mirror.gcr.io/library/php:8.2-apache
 
 # Evitar errores de localización durante instalaciones
 ENV DEBIAN_FRONTEND=noninteractive
@@ -17,8 +17,8 @@ RUN apt-get update && apt-get install -y \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
     mariadb-client \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Instalar extensiones de PHP
 RUN docker-php-ext-install pdo_mysql mysqli mbstring exif pcntl bcmath gd zip
@@ -27,7 +27,7 @@ RUN docker-php-ext-install pdo_mysql mysqli mbstring exif pcntl bcmath gd zip
 RUN a2enmod rewrite
 
 # Instalar Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=mirror.gcr.io/library/composer:latest /usr/bin/composer /usr/bin/composer
 
 # Establecer el directorio de trabajo
 WORKDIR /var/www/html
@@ -43,18 +43,18 @@ RUN composer install --no-interaction --no-dev --optimize-autoloader
 
 # Instalar Node.js y compilar assets
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
- && apt-get update \
- && apt-get install -y nodejs \
- && npm install \
- && npm run build \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+    && apt-get update \
+    && apt-get install -y nodejs \
+    && npm install \
+    && npm run build \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Configurar permisos
 RUN chown -R www-data:www-data /var/www/html \
- && chmod -R 775 /var/www/html/storage \
- && chmod -R 775 /var/www/html/bootstrap/cache \
- && chmod -R 775 /var/www/html/storage_backup
+    && chmod -R 775 /var/www/html/storage \
+    && chmod -R 775 /var/www/html/bootstrap/cache \
+    && chmod -R 775 /var/www/html/storage_backup
 
 # Configurar Apache
 COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
@@ -64,17 +64,17 @@ RUN php artisan storage:link
 
 # Crear script de inicialización
 RUN echo '#!/bin/bash\n\
-if [ -z "$(ls -A /var/www/html/storage)" ]; then\n\
+    if [ -z "$(ls -A /var/www/html/storage)" ]; then\n\
     echo "Storage directory is empty, restoring from backup..."\n\
     cp -r /var/www/html/storage_backup/* /var/www/html/storage/\n\
     chown -R www-data:www-data /var/www/html/storage\n\
     chmod -R 775 /var/www/html/storage\n\
     echo "Storage restored successfully"\n\
-fi\n\
-echo "Removing storage backup..."\n\
-rm -rf /var/www/html/storage_backup\n\
-apache2-foreground' > /usr/local/bin/init-storage.sh \
- && chmod +x /usr/local/bin/init-storage.sh
+    fi\n\
+    echo "Removing storage backup..."\n\
+    rm -rf /var/www/html/storage_backup\n\
+    apache2-foreground' > /usr/local/bin/init-storage.sh \
+    && chmod +x /usr/local/bin/init-storage.sh
 
 # Exponer el puerto 80
 EXPOSE 80
