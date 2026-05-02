@@ -76,6 +76,17 @@ RUN echo '#!/bin/bash\n\
     fi\n\
     echo "Removing storage backup..."\n\
     rm -rf /var/www/html/storage_backup\n\
+    \n\
+    echo "Optimizing Laravel for production..."\n\
+    php artisan config:cache\n\
+    php artisan route:cache\n\
+    php artisan view:cache\n\
+    php artisan event:cache\n\
+    \n\
+    echo "Running migrations and seeders..."\n\
+    php artisan migrate --force --seed\n\
+    \n\
+    echo "Starting Apache..."\n\
     apache2-foreground' > /usr/local/bin/init-storage.sh \
     && chmod +x /usr/local/bin/init-storage.sh
 

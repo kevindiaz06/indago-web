@@ -29,6 +29,52 @@ services:
     networks:
       - dokploy-network
 
+  queue:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: indago-queue-prod
+    restart: unless-stopped
+    command: php artisan queue:work --tries=3 --timeout=90
+    environment:
+      - APP_ENV=production
+      - APP_DEBUG=false
+      - DB_CONNECTION=mysql
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=${DB_DATABASE:-indago}
+      - DB_USERNAME=${DB_USERNAME:-indago}
+      - DB_PASSWORD=${DB_PASSWORD:-password}
+    volumes:
+      - storage-data:/var/www/html/storage
+    depends_on:
+      - db
+    networks:
+      - dokploy-network
+
+  scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: indago-scheduler-prod
+    restart: unless-stopped
+    command: sh -c "while true; do php artisan schedule:run --verbose --no-interaction & sleep 60; done"
+    environment:
+      - APP_ENV=production
+      - APP_DEBUG=false
+      - DB_CONNECTION=mysql
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=${DB_DATABASE:-indago}
+      - DB_USERNAME=${DB_USERNAME:-indago}
+      - DB_PASSWORD=${DB_PASSWORD:-password}
+    volumes:
+      - storage-data:/var/www/html/storage
+    depends_on:
+      - db
+    networks:
+      - dokploy-network
+
   db:
     image: mysql:8.0
     container_name: indago-db-prod
